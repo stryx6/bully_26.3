@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:antimatter",
+  "base": "minecraft:netherite_spear",
+  "result": {
+    "id": "bully:antimatter_spear"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

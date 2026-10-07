@@ -1,0 +1,9 @@
+{
+  "type":  "minecraft:smithing_transform",
+  "addition":  "bully:aetherald",
+  "base":  "minecraft:netherite_sword",
+  "result":  {
+    "id":  "bully:aetherald_sword"
+  },
+  "template":  "bully:antimatter_upgrade_smithing_template"
+}

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#bully:enchantable/aetherald_armor",
+    "#bully:enchantable/antimatter_armor",
+    "#bully:enchantable/auronyx_armor",
+    "#bully:enchantable/feralyth_armor",
+    "#bully:enchantable/fluxite_armor",
+    "#bully:enchantable/mystralite_armor",
+    "#bully:enchantable/nebulazul_armor",
+    "#bully:enchantable/voidcrist_armor"
+  ]
+}

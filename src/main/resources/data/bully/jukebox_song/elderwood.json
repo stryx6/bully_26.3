@@ -1,0 +1,8 @@
+{
+  "comparator_output": 15,
+  "description": {
+    "translate": "jukebox_song.bully.elderwood"
+  },
+  "length_in_seconds": 360.0,
+  "sound_event": "bully:music_disc.elderwood"
+}

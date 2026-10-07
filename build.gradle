@@ -1,0 +1,160 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	// Add repositories to retrieve artifacts from in here.
+	// You should only use this when depending on other mods because
+	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
+	// for more information about repositories.
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"bully" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+}
+
+dependencies {
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ["src/main/java"]
+		}
+	}
+
+	client {
+		java {
+			srcDirs = ["src/client/java"]
+		}
+	}
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": inputs.properties.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
+
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+tasks.withType(JavaExec).configureEach {
+	// Minecraft 26.2 uses Java 25.
+	javaLauncher = javaToolchains.launcherFor {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+	if (name.startsWith("run")) {
+		jvmArgs "--enable-native-access=ALL-UNNAMED"
+	}
+}
+
+tasks.register("validateLang") {
+	group = "verification"
+	description = "Validates assets/bully/lang/*.json are valid and match en_us.json keyset."
+	doLast {
+		def langDir = file("src/main/resources/assets/bully/lang")
+		def baseFile = new File(langDir, "en_us.json")
+		if (!baseFile.exists()) {
+			throw new GradleException("Missing base lang file: ${baseFile}")
+		}
+
+		def slurper = new groovy.json.JsonSlurper()
+		def base = slurper.parse(baseFile)
+		if (!(base instanceof Map)) {
+			throw new GradleException("en_us.json must be a JSON object")
+		}
+		def baseKeys = new TreeSet(base.keySet().collect { it.toString() })
+
+		langDir.listFiles(new FilenameFilter() {
+			boolean accept(File d, String name) { name.endsWith(".json") }
+		}).each { f ->
+			def data = slurper.parse(f)
+			if (!(data instanceof Map)) {
+				throw new GradleException("${f.name} must be a JSON object")
+			}
+			def keys = new TreeSet(data.keySet().collect { it.toString() })
+			if (keys != baseKeys) {
+				def missing = new TreeSet(baseKeys); missing.removeAll(keys)
+				def extra = new TreeSet(keys); extra.removeAll(baseKeys)
+				throw new GradleException("Lang key mismatch in ${f.name}. Missing=${missing.size()} Extra=${extra.size()}")
+			}
+			data.each { k, v ->
+				if (!(v instanceof String)) {
+					throw new GradleException("${f.name} has non-string value for key '${k}'")
+				}
+			}
+		}
+	}
+}
+
+tasks.named("check").configure {
+	dependsOn(tasks.named("validateLang"))
+}
+
+jar {
+	inputs.property "archivesName", project.base.archivesName
+
+	from("LICENSE") {
+		rename { "${it}_${inputs.properties.archivesName}"}
+	}
+}
+
+// configure the maven publication
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
+			from components.java
+		}
+	}
+
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
+	}
+}

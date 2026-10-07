@@ -1,0 +1,8 @@
+{
+  "comparator_output": 11,
+  "description": {
+    "translate": "jukebox_song.bully.forgotten_tale"
+  },
+  "length_in_seconds": 252.0,
+  "sound_event": "bully:music_disc.forgotten_tale"
+}

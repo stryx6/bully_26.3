@@ -1,0 +1,50 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "entries": [
+      {
+        "model": {
+          "type": "minecraft:condition",
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "bully:item/magic_wand_blue"
+          },
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "bully:item/magic_wand_blue_charging"
+          },
+          "property": "minecraft:using_item"
+        },
+        "threshold": 1.0
+      },
+      {
+        "model": {
+          "type": "minecraft:condition",
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "bully:item/magic_wand_green"
+          },
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "bully:item/magic_wand_green_charging"
+          },
+          "property": "minecraft:using_item"
+        },
+        "threshold": 2.0
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:condition",
+      "on_false": {
+        "type": "minecraft:model",
+        "model": "bully:item/magic_wand_red"
+      },
+      "on_true": {
+        "type": "minecraft:model",
+        "model": "bully:item/magic_wand_red_charging"
+      },
+      "property": "minecraft:using_item"
+    },
+    "property": "minecraft:custom_model_data"
+  }
+}

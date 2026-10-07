@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "bully:tool_upgrade_smithing_template",
+  "base": "#bully:upgradeable_scythes",
+  "addition": "minecraft:lapis_block",
+  "result": {
+    "id": "bully:nebulazul_scythe"
+  }
+}

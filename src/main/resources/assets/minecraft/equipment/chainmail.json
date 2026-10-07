@@ -1,0 +1,27 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:chainmail"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft:chainmail"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "minecraft:chainmail"
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "palette": "bully:antimatter",
+      "when": {
+        "material": "bully:antimatter"
+      }
+    }
+  ]
+}

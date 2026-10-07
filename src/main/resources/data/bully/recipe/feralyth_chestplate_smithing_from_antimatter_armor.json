@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:resin_bricks",
+  "base": "#bully:upgradeable_chest_armor",
+  "result": {
+    "id": "bully:feralyth_chestplate"
+  },
+  "template": "bully:armor_upgrade_smithing_template"
+}

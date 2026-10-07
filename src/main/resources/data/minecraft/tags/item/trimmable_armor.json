@@ -1,0 +1,44 @@
+{
+  "replace": false,
+  "values": [
+    "bully:antimatter_helmet",
+    "bully:antimatter_chestplate",
+    "bully:antimatter_leggings",
+    "bully:antimatter_boots",
+
+    "bully:aetherald_helmet",
+    "bully:aetherald_chestplate",
+    "bully:aetherald_leggings",
+    "bully:aetherald_boots",
+
+    "bully:auronyx_helmet",
+    "bully:auronyx_chestplate",
+    "bully:auronyx_leggings",
+    "bully:auronyx_boots",
+
+    "bully:feralyth_helmet",
+    "bully:feralyth_chestplate",
+    "bully:feralyth_leggings",
+    "bully:feralyth_boots",
+
+    "bully:fluxite_helmet",
+    "bully:fluxite_chestplate",
+    "bully:fluxite_leggings",
+    "bully:fluxite_boots",
+
+    "bully:mystralite_helmet",
+    "bully:mystralite_chestplate",
+    "bully:mystralite_leggings",
+    "bully:mystralite_boots",
+
+    "bully:nebulazul_helmet",
+    "bully:nebulazul_chestplate",
+    "bully:nebulazul_leggings",
+    "bully:nebulazul_boots",
+
+    "bully:voidcrist_helmet",
+    "bully:voidcrist_chestplate",
+    "bully:voidcrist_leggings",
+    "bully:voidcrist_boots"
+  ]
+}

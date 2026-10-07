@@ -1,0 +1,9 @@
+{
+    "type":  "minecraft:smithing_transform",
+    "addition":  "bully:feralyth",
+    "base":  "minecraft:mace",
+    "result":  {
+                   "id":  "bully:feralyth_scythe"
+               },
+    "template":  "bully:antimatter_upgrade_smithing_template"
+}

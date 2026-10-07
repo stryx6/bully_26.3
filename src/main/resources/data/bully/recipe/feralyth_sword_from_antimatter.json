@@ -1,0 +1,10 @@
+{
+  "type":  "minecraft:smithing_transform",
+  "addition":  "minecraft:resin_bricks",
+  "base":  "#bully:upgradeable_swords",
+  "result":
+  {
+    "id":  "bully:feralyth_sword"
+  },
+  "template":  "bully:tool_upgrade_smithing_template"
+}

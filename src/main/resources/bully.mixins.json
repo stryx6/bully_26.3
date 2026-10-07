@@ -1,0 +1,21 @@
+{
+	"required": true,
+	"package": "net.kraftattacke.bully.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"AnvilMenuMixin",
+		"EnchantmentHelperMixin",
+		"EnchantmentMixin",
+		"LivingEntityMixin",
+		"ItemStackMixin",
+		"ItemCombinerMenuAccessor",
+		"ExampleMixin",
+		"VillagerTradeParticlesMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

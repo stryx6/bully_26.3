@@ -1,0 +1,6 @@
+{
+  "parent": "bully:item/scythe_base",
+  "textures": {
+    "layer0": "bully:item/feralyth_scythe"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "description": {
+    "translate": "enchantment.bully.pull"
+  },
+  "exclusive_set": "#bully:exclusive_set/pull",
+  "supported_items": "#minecraft:swords",
+  "weight": 5,
+  "max_level": 1,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 8
+  },
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 8
+  },
+  "anvil_cost": 2,
+  "slots": [
+    "mainhand"
+  ]
+}

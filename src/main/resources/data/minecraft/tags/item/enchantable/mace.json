@@ -1,0 +1,13 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_scythe",
+                   "bully:aetherald_scythe",
+                   "bully:auronyx_scythe",
+                   "bully:feralyth_scythe",
+                   "bully:fluxite_scythe",
+                   "bully:mystralite_scythe",
+                   "bully:nebulazul_scythe",
+                   "bully:voidcrist_scythe"
+               ]
+}

@@ -1,0 +1,66 @@
+{
+  "music_disc.onryo": {
+    "sounds": [
+      {
+        "name": "bully:onryo",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.attack": {
+    "sounds": [
+      {
+        "name": "bully:attack",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.elderwood": {
+    "sounds": [
+      {
+        "name": "bully:elderwood",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.evermere": {
+    "sounds": [
+      {
+        "name": "bully:evermere",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.forgotten_tale": {
+    "sounds": [
+      {
+        "name": "bully:forgotten_tale",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.shadowroot": {
+    "sounds": [
+      {
+        "name": "bully:shadowroot",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.silverroad": {
+    "sounds": [
+      {
+        "name": "bully:silverroad",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.undertale": {
+    "sounds": [
+      {
+        "name": "bully:undertale",
+        "stream": true
+      }
+    ]
+  }
+}

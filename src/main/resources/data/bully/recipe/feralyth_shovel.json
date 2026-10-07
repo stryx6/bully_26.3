@@ -1,0 +1,9 @@
+{
+    "type":  "minecraft:smithing_transform",
+    "addition":  "bully:feralyth",
+    "base":  "minecraft:netherite_shovel",
+    "result":  {
+                   "id":  "bully:feralyth_shovel"
+               },
+    "template":  "bully:antimatter_upgrade_smithing_template"
+}

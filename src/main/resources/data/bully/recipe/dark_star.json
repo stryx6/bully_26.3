@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "bully:antimatter",
+    "N": "minecraft:nether_star",
+    "O": "minecraft:ominous_trial_key",
+    "E": "minecraft:enchanted_golden_apple",
+    "C": "minecraft:crying_obsidian"
+  },
+  "pattern": [
+    "EAO",
+    "CNA",
+    "OCE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bully:dark_star"
+  }
+}

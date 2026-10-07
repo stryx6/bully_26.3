@@ -1,0 +1,9 @@
+{
+    "type":  "minecraft:smithing_transform",
+    "addition":  "bully:auronyx",
+    "base":  "minecraft:mace",
+    "result":  {
+                   "id":  "bully:auronyx_scythe"
+               },
+    "template":  "bully:antimatter_upgrade_smithing_template"
+}

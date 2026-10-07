@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "Y": "minecraft:redstone_block",
+    "C": "bully:antimatter"
+  },
+  "pattern": [
+    " Y ",
+    "YCY",
+    " Y "
+  ],
+  "result": {
+    "count": 1,
+    "id": "bully:fluxite"
+  }
+}

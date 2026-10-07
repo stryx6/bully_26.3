@@ -1,0 +1,27 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:leather"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft:leather"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "minecraft:leather"
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "palette": "bully:antimatter",
+      "when": {
+        "material": "bully:antimatter"
+      }
+    }
+  ]
+}

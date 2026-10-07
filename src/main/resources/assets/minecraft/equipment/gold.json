@@ -1,0 +1,33 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:gold"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft:gold"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "minecraft:gold"
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "palette": "minecraft:trim/gold_darker",
+      "when": {
+        "material": "minecraft:gold"
+      }
+    },
+    {
+      "palette": "bully:antimatter",
+      "when": {
+        "material": "bully:antimatter"
+      }
+    }
+  ]
+}

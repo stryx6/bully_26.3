@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:voidcrist",
+  "base": "minecraft:netherite_leggings",
+  "result": {
+    "id": "bully:voidcrist_leggings"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:antimatter",
+  "base": "minecraft:mace",
+  "result": {
+    "id": "bully:antimatter_scythe"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

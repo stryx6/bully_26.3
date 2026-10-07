@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "bully:tool_upgrade_smithing_template",
+  "base": "#bully:upgradeable_hoes",
+  "addition": "minecraft:emerald_block",
+  "result": {
+    "id": "bully:aetherald_hoe"
+  }
+}

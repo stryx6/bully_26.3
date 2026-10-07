@@ -1,0 +1,45 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.bully.mace_guard"
+  },
+  "effects": {
+    "minecraft:damage_protection": [
+      {
+        "effect": {
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 0.08,
+            "per_level_above_first": 0.04
+          }
+        },
+        "requirements": {
+          "type": "minecraft:damage_source_properties",
+          "predicate": {
+            "tags": [
+              {
+                "id": "#minecraft:mace_smash",
+                "expected": true
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "max_level": 4,
+  "min_cost": {
+    "base": 22,
+    "per_level_above_first": 9
+  },
+  "max_cost": {
+    "base": 38,
+    "per_level_above_first": 12
+  },
+  "slots": [
+    "armor"
+  ],
+  "supported_items": "#bully:enchantable/mace_guard_armor",
+  "weight": 1
+}

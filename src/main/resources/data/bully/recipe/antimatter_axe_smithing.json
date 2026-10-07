@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:antimatter",
+  "base": "minecraft:netherite_axe",
+  "result": {
+    "id": "bully:antimatter_axe"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

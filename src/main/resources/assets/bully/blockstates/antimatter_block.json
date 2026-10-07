@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "bully:block/antimatter_block"
+      },
+      {
+        "model": "bully:block/antimatter_block_mirrored"
+      },
+      {
+        "model": "bully:block/antimatter_block",
+        "y": 180
+      },
+      {
+        "model": "bully:block/antimatter_block_mirrored",
+        "y": 180
+      }
+    ]
+  }
+}

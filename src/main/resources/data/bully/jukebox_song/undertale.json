@@ -1,0 +1,8 @@
+{
+  "comparator_output": 10,
+  "description": {
+    "translate": "jukebox_song.bully.undertale"
+  },
+  "length_in_seconds": 123.0,
+  "sound_event": "bully:music_disc.undertale"
+}

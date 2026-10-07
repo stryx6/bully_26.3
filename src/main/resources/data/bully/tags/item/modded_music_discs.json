@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "bully:music_disc_attack",
+    "bully:music_disc_elderwood",
+    "bully:music_disc_evermere",
+    "bully:music_disc_forgotten_tale",
+    "bully:music_disc_onryo",
+    "bully:music_disc_shadowroot",
+    "bully:music_disc_silverroad",
+    "bully:music_disc_undertale"
+  ]
+}

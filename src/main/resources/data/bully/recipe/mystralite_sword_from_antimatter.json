@@ -1,0 +1,10 @@
+{
+  "type":  "minecraft:smithing_transform",
+  "addition":  "minecraft:diamond_block",
+  "base":  "#bully:upgradeable_swords",
+  "result":
+  {
+    "id":  "bully:mystralite_sword"
+  },
+  "template":  "bully:tool_upgrade_smithing_template"
+}

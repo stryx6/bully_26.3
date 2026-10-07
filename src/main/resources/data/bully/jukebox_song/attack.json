@@ -1,0 +1,8 @@
+{
+  "comparator_output": 7,
+  "description": {
+    "translate": "jukebox_song.bully.attack"
+  },
+  "length_in_seconds": 138.0,
+  "sound_event": "bully:music_disc.attack"
+}

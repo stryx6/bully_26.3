@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:antimatter",
+  "base": "minecraft:netherite_pickaxe",
+  "result": {
+    "id": "bully:antimatter_pickaxe"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

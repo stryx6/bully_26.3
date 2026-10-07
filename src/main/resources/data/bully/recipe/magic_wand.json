@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "bully:magic_crystal",
+    "S": "bully:large_stick"
+  },
+  "pattern": [
+    "  C",
+    " S ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "bully:magic_wand"
+  }
+}

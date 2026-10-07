@@ -1,0 +1,11 @@
+{
+  "layers": {
+    "wings": [
+      {
+        "texture": "bully:antimatter_elytra",
+        "use_player_texture": true
+      }
+    ]
+  }
+}
+

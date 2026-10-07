@@ -1,0 +1,20 @@
+{
+    "type":  "minecraft:crafting_shaped",
+    "category":  "misc",
+    "key":
+      {
+        "#":  "minecraft:gold_ingot",
+        "C":  "minecraft:redstone_block"
+      },
+    "pattern":
+      [
+        "###",
+        "#C#",
+        "###"
+      ],
+    "result":
+    {
+      "count":  1,
+      "id":  "bully:tool_upgrade_smithing_template"
+    }
+}

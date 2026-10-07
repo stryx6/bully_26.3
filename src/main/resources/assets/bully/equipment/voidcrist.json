@@ -1,0 +1,27 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "bully:voidcrist"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "bully:voidcrist"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "bully:voidcrist"
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "when": {
+        "material": "bully:antimatter"
+      },
+      "palette": "bully:antimatter"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:antimatter",
+  "base": "minecraft:netherite_leggings",
+  "result": {
+    "id": "bully:antimatter_leggings"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

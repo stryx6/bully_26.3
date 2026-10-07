@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "e": "minecraft:echo_shard",
+    "N": "bully:dark_star",
+    "d": "minecraft:diamond",
+    "R": "minecraft:redstone_block",
+    "L": "minecraft:lapis_block",
+    "E": "minecraft:emerald_block"
+  },
+  "pattern": [
+    "ALA",
+    "RNE",
+    "ded"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bully:magic_crystal"
+  }
+}

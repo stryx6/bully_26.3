@@ -1,0 +1,5 @@
+{
+  "exhaustion": 0.0,
+  "message_id": "bully.magic_wand.frost_burst",
+  "scaling": "when_caused_by_living_non_player"
+}

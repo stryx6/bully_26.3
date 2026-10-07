@@ -1,0 +1,22 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "minecraft:turtle_helmet"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "minecraft:turtle_helmet"
+      }
+    ]
+  },
+  "trim_overrides": [
+    {
+      "palette": "bully:antimatter",
+      "when": {
+        "material": "bully:antimatter"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "bully",
+	"version": "${version}",
+	"name": "Bully",
+	"description": "A mod that adds new equipment after netherite!",
+	"authors": [
+		"Stryx6"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/tomatobato565/bully565.git"
+	},
+	"license": "MIT",
+	"icon": "assets/bully/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.kraftattacke.bully.Bully"
+		],
+		"client": [
+			"net.kraftattacke.bully.BullyClient"
+		],
+		"fabric-datagen": [
+			"net.kraftattacke.bully.BullyDataGenerator"
+		]
+	},
+	"mixins": [
+		"bully.mixins.json",
+		{
+			"config": "bully.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": ">=26.3 <26.4",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

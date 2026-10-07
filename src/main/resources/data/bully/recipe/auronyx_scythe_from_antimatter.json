@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "bully:tool_upgrade_smithing_template",
+  "base": "#bully:upgradeable_scythes",
+  "addition": "minecraft:gold_block",
+  "result": {
+    "id": "bully:auronyx_scythe"
+  }
+}

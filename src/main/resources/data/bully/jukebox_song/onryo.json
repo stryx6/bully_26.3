@@ -1,0 +1,8 @@
+{
+  "comparator_output": 13,
+  "description": {
+    "translate": "jukebox_song.bully.onryo"
+  },
+  "length_in_seconds": 56.0,
+  "sound_event": "bully:music_disc.onryo"
+}

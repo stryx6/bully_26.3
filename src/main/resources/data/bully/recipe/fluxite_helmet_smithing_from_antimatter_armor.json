@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:redstone_block",
+  "base": "#bully:upgradeable_head_armor",
+  "result": {
+    "id": "bully:fluxite_helmet"
+  },
+  "template": "bully:armor_upgrade_smithing_template"
+}

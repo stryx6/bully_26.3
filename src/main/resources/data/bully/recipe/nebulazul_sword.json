@@ -1,0 +1,10 @@
+{
+  "type":  "minecraft:smithing_transform",
+  "addition":  "bully:nebulazul",
+  "base":  "minecraft:netherite_sword",
+  "result":
+  {
+    "id":  "bully:nebulazul_sword"
+  },
+  "template":  "bully:antimatter_upgrade_smithing_template"
+}

@@ -1,0 +1,8 @@
+{
+  "comparator_output": 9,
+  "description": {
+    "translate": "jukebox_song.bully.evermere"
+  },
+  "length_in_seconds": 211.0,
+  "sound_event": "bully:music_disc.evermere"
+}

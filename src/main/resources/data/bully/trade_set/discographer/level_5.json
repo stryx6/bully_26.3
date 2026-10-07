@@ -1,0 +1,6 @@
+{
+  "amount": 5.0,
+  "allow_duplicates": false,
+  "random_sequence": "bully:trade_set/discographer/level_5",
+  "trades": "#bully:discographer/level_5"
+}

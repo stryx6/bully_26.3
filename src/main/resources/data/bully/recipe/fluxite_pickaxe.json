@@ -1,0 +1,9 @@
+{
+    "type":  "minecraft:smithing_transform",
+    "addition":  "bully:fluxite",
+    "base":  "minecraft:netherite_pickaxe",
+    "result":  {
+                   "id":  "bully:fluxite_pickaxe"
+               },
+    "template":  "bully:antimatter_upgrade_smithing_template"
+}

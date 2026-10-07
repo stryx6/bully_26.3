@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:mystralite",
+  "base": "minecraft:netherite_helmet",
+  "result": {
+    "id": "bully:mystralite_helmet"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

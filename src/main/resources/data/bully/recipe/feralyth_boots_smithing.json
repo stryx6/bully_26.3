@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:feralyth",
+  "base": "minecraft:netherite_boots",
+  "result": {
+    "id": "bully:feralyth_boots"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}

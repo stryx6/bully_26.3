@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "bully:antimatter_block"
+  ],
+  "result": {
+    "id": "bully:antimatter",
+    "count": 9
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:antimatter",
+  "base": "minecraft:elytra",
+  "result": {
+    "id": "bully:antimatter_elytra"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
+}
+

@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "kraftattacke.bully.net.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ExampleClientMixin",
+		"MagicWandTargetGlowMixin",
+		"VillagerProfessionLayerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

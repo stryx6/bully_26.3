@@ -1,0 +1,10 @@
+{
+  "type":  "minecraft:smithing_transform",
+  "addition":  "minecraft:iron_block",
+  "base":  "#bully:upgradeable_chest_armor",
+  "result":
+  {
+    "id":  "bully:antimatter_chestplate"
+  },
+  "template":  "bully:armor_upgrade_smithing_template"
+}
