@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "bully-port-test",
+  "version": "1.0.0",
+  "name": "Bully Hacker Menu Port Tests",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-client-gametest": ["net.kraftattacke.bully.item.MagicWandGameTest", "net.kraftattacke.bully.hackermenu.HackerMenuGameTest", "net.kraftattacke.bully.trim.TrimGameTest"]
+  }
+}

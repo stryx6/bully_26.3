@@ -1,0 +1,6 @@
+{
+    "parent":  "bully:item/feralyth_leggings",
+    "textures":  {
+                     "layer1":  "minecraft:trims/items/leggings_trim_gold"
+                 }
+}

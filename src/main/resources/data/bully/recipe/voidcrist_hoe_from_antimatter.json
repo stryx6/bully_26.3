@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_hoes",
-  "addition": "minecraft:amethyst_block",
-  "result": {
-    "id": "bully:voidcrist_hoe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/voidcrist_hoe",
+    "addition":  "minecraft:amethyst_block",
+    "result":  {
+                   "id":  "bully:voidcrist_hoe"
+               }
 }

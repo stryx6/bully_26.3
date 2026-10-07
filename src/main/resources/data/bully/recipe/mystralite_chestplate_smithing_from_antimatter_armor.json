@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:diamond_block",
-  "base": "#bully:upgradeable_chest_armor",
-  "result": {
-    "id": "bully:mystralite_chestplate"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:diamond_block",
+    "base":  "#bully:upgrade_targets/mystralite_chestplate",
+    "result":  {
+                   "id":  "bully:mystralite_chestplate"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

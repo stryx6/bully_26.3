@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_pickaxe",
+                   "bully:aetherald_pickaxe",
+                   "bully:auronyx_pickaxe",
+                   "bully:feralyth_pickaxe",
+                   "bully:fluxite_pickaxe",
+                   "bully:mystralite_pickaxe",
+                   "bully:nebulazul_pickaxe"
+               ]
+}

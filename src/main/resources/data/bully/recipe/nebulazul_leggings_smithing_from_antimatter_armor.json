@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:lapis_block",
-  "base": "#bully:upgradeable_leg_armor",
-  "result": {
-    "id": "bully:nebulazul_leggings"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:lapis_block",
+    "base":  "#bully:upgrade_targets/nebulazul_leggings",
+    "result":  {
+                   "id":  "bully:nebulazul_leggings"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

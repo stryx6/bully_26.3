@@ -17,6 +17,7 @@ public class Bully implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		net.kraftattacke.bully.hackermenu.HackerMenus.register();
 		ModNetworking.register();
 		ModSounds.register();
 		ModParticles.register();

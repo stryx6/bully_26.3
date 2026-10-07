@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:iron_block",
-  "base":  "#bully:upgradeable_head_armor",
-  "result":
-  {
-    "id":  "bully:antimatter_helmet"
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:iron_block",
+  "base": "#bully:upgrade_targets/antimatter_helmet",
+  "result": {
+    "id": "bully:antimatter_helmet"
   },
-  "template":  "bully:armor_upgrade_smithing_template"
+  "template": "bully:armor_upgrade_smithing_template"
 }

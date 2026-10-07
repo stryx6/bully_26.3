@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_axes",
-  "addition": "minecraft:redstone_block",
-  "result": {
-    "id": "bully:fluxite_axe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/fluxite_axe",
+    "addition":  "minecraft:redstone_block",
+    "result":  {
+                   "id":  "bully:fluxite_axe"
+               }
 }

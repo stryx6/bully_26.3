@@ -1,29 +1,16 @@
-# Changelog seit dem ersten 1.4.1 Build
+# Changelog Since the First 1.4.1 Build
 
-Vergleichsbasis: erster lokaler Build `bully-1.4.1`.
-Aktueller Stand: `1.4.2.2`.
+Comparison baseline: first local build `bully-1.4.1`.
+Current state: `1.4.2.2`.
 
-## 1.4.2.2
+Note: `1.4.2.1` and `1.4.2.2` belong to the same version here. The `1.4.2.2` build only exists because `gradle.properties` was accidentally not updated before the `1.4.2.1` build.
 
-### Neu
-- Neuer Custom-Partikel `bully:burning_shield` inklusive Client-Factory und Texturen.
-- Burning-Shield-Effekt fuer den Ember-Lance-Schildbruch.
+## 1.4.2.1 / 1.4.2.2
 
-### Geaendert
-- Magic-Wand-Ladezeit neu gebalanced:
-  - minimale Ladezeit von 8 auf 50 Ticks erhoeht.
-  - volle Ladezeit von 80 auf 180 Ticks erhoeht.
-- Ember Lance entfernt beim Schildbruch nicht mehr zusaetzlich Slowness/Weakness, sondern fokussiert auf Schildschaden, Schild-Cooldown, Feuer und Partikel.
-- Magic-Circle-Rendering ueberarbeitet:
-  - Kreis folgt weiterhin dem Fadenkreuz.
-  - Front-Third-Person rendert den Kreis nicht mehr hinter dem Spieler.
-  - Kreis wird knapp ueber dem Boden gehalten, damit die Textur nicht in Gras/Bloecke einsinkt.
-  - Kreisgeometrie/Depth/Charged-Offset angepasst.
-
-## 1.4.2.1
-
-### Neu
-- Separate In-Hand-Modelle und Texturen fuer alle Speere:
+### Added
+- New custom particle "bully:burning_shield", including client factory and textures.
+- Burning shield effect for the Ember Lance shield break.
+- Separate in-hand models and textures for all spears:
   - Aetherald
   - Antimatter
   - Auronyx
@@ -32,61 +19,70 @@ Aktueller Stand: `1.4.2.2`.
   - Mystralite
   - Nebulazul
   - Voidcrist
-- Eigene `ScytheItem`-Klasse für Scythes mit magischem Damage-Type.
+- Dedicated "ScytheItem" class for scythes with a magic damage type.
 
-### Geaendert
-- Speer-Item-Definitionen nutzen jetzt `minecraft:display_context`:
-  - GUI/Ground/Fixed/Shelf zeigen das normale Speer-Icon.
-  - In der Hand wird das neue `*_spear_in_hand`-Modell genutzt.
-- Speer-Swap-Animation skaliert.
-- Magic-Circle-Texturen wurden ersetzt/verbessert.
-- Magic-Wand-Visuals wurden weiter angepasst.
-- Dark-Star- und Magic-Crystal-Rezepte wurden überarbeitet.
-- Scythes wurden von `MaceItem` auf `ScytheItem` umgestellt und bekommen eine Weapon-Komponente.
+### Changed
+- Rebalanced the Magic Wand charge timing:
+  - Minimum charge time increased from 8 to 50 ticks.
+  - Full charge time increased from 80 to 180 ticks.
+- Ember Lance no longer additionally removes Slowness/Weakness on shield break. It now focuses on shield damage, shield cooldown, fire, and particles.
+- Reworked Magic Circle rendering:
+  - The circle still follows the crosshair.
+  - Front third-person view no longer renders the circle behind the player.
+  - The circle is kept just above the ground so the texture does not sink into grass or blocks.
+  - Circle geometry, depth handling, and charged offset were adjusted.
+- Spear item definitions now use "minecraft:display_context":
+  - GUI, ground, fixed, and shelf views show the regular spear icon.
+  - The new "*_spear_in_hand" model is used while held in hand.
+- Scaled the spear swap animation.
+- Replaced and improved Magic Circle textures.
+- Further adjusted Magic Wand visuals.
+- Reworked Dark Star and Magic Crystal recipes.
+- Scythes were changed from "MaceItem" to "ScytheItem" and now receive a weapon component.
 
-### Geaendert am Gameplay
-- Ember Lance kann blockierende Schilde beschädigen, in Cooldown setzen, die Block-Nutzung abbrechen und den Gegner anzünden.
+### Gameplay Changed
+- Ember Lance can damage blocking shields, put them on cooldown, interrupt active blocking, and set the opponent on fire.
 
 ## 1.4.2
 
-### Neu
-- Neues Item `Magic Wand`.
-- Drei Zaubermodi für die Magic Wand:
-  - `Ember Lance`: langer, direkter Feuer-/Schadenszauber.
-  - `Frost Burst`: AoE-Schaden mit starker Slowness und Knockback.
-  - `Life Bloom`: Heilung für den Spieler/Verbuedete und Debuffs/Schaden gegen Gegner.
-- Moduswechsel per Sneak + Rechtsklick.
-- Lade- und Full-Charge-System mit Sounds, Partikeln, Cooldowns und Haltbarkeitsverbrauch.
-- Neues Client-Targeting:
-  - Ziele werden beim Laden anhand des Fadenkreuzes gesucht.
-  - Gültige Ziele bekommen einen farbigen Outline-Effekt passend zum Zaubermodus.
-- Neues Beam-Rendering:
-  - Server sendet `magic_wand_beam` an Spieler in Reichweite.
-  - Client rendert farbige Beacon-Beam-Ribbons für abgefeuerte Zauber.
-- Neues Magic-Circle-Ladevisual vor dem Spieler bzw. im Fadenkreuz.
-- Dynamisches Licht für gehaltene/geladene Magic Wand:
-  - Idle-Lichtlevel 8.
-  - Charging-Lichtlevel 12.
-  - Temporäre Light-Blocks werden automatisch entfernt und beim Speichern/Serverstop bereinigt.
-- Neue Items:
+### Added
+- New item: `Magic Wand`.
+- Three spell modes for the Magic Wand:
+  - `Ember Lance`: long, direct fire/damage spell.
+  - `Frost Burst`: AoE damage with strong Slowness and knockback.
+  - `Life Bloom`: healing for the player/allies and debuffs/damage against enemies.
+- Mode switching via Sneak + right-click.
+- Charge and full-charge system with sounds, particles, cooldowns, and durability usage.
+- New client targeting:
+  - Targets are searched while charging based on the crosshair.
+  - Valid targets receive a colored outline effect matching the spell mode.
+- New beam rendering:
+  - The server sends `magic_wand_beam` to players in range.
+  - The client renders colored beacon beam ribbons for fired spells.
+- New Magic Circle charge visual in front of the player or at the crosshair.
+- Dynamic light for held/charged Magic Wand:
+  - Idle light level 8.
+  - Charging light level 12.
+  - Temporary light blocks are removed automatically and cleaned up on save/server stop.
+- New items:
   - `Large Stick`
   - `Magic Crystal`
   - `Dark Star`
-- Neue Crafting-Kette:
+- New crafting chain:
   - Logs -> `Large Stick`
   - Antimatter/Nether Star/Ominous Trial Key/Enchanted Golden Apple/Crying Obsidian -> `Dark Star`
   - `Dark Star` + Amethyst/Echo Shard/Diamond/Redstone/Lapis/Emerald -> `Magic Crystal`
   - `Magic Crystal` + `Large Stick` -> `Magic Wand`
-- Neue Magic-Wand-Modelle und Texturen:
-  - Rot/Blau/Gruen
-  - jeweils normale und Charging-Variante
-  - separate Kristall-Innen-/Aussen-Texturen
-  - Magic-Circle- und Charged-Magic-Circle-Texturen
-- Neue Damage-Types:
+- New Magic Wand models and textures:
+  - Red/blue/green
+  - Regular and charging variants for each color
+  - Separate crystal inner/outer textures
+  - Magic Circle and charged Magic Circle textures
+- New damage types:
   - `magic_wand_ember_lance`
   - `magic_wand_frost_burst`
   - `magic_wand_life_bloom`
-- Neue Damage-Type-Tags für Magic-Wand-Schaden:
+- New damage type tags for Magic Wand damage:
   - `bypasses_armor`
   - `bypasses_wolf_armor`
   - `no_knockback`
@@ -94,19 +90,19 @@ Aktueller Stand: `1.4.2.2`.
   - `witch_resistant_to`
   - `avoids_guardian_thorns`
   - `always_triggers_silverfish`
-- Magic Wand ist jetzt im Durability-Enchantable-Tag.
-- Neue Death-Messages und Tooltips für Magic Wand und ihre Zauber.
+- Magic Wand is now part of the durability enchantable tag.
+- New death messages and tooltips for Magic Wand and its spells.
 
-### Geaendert
-- Neue Items wurden in den Bully-Creative-Tab aufgenommen.
-- Client-Initialisierung registriert Magic-Wand-Visuals.
-- Server-Initialisierung registriert Magic-Wand-Networking und Magic-Wand-Light-Events.
-- Creative-Tab-Registrierung für Toolsets wurde aus `ModTools` entfernt und zentral über `ModItems`/Creative-Tab-Aufbau geführt.
+### Changed
+- New items were added to the Bully creative tab.
+- Client initialization now registers Magic Wand visuals.
+- Server initialization now registers Magic Wand networking and Magic Wand light events.
+- Creative tab registration for toolsets was removed from `ModTools` and is now handled centrally through `ModItems`/creative tab setup.
 
 ## 1.4.1.1
 
-### Neu
-- Baby-Armor-Support für alle Custom-Armor-Sets:
+### Added
+- Baby armor support for all custom armor sets:
   - Aetherald
   - Antimatter
   - Auronyx
@@ -115,8 +111,8 @@ Aktueller Stand: `1.4.2.2`.
   - Mystralite
   - Nebulazul
   - Voidcrist
-- Neue `humanoid_baby`-Texturen und Equipment-JSON-Eintraege für die genannten Sets.
+- New `humanoid_baby` textures and equipment JSON entries for the listed sets.
 
-## Zusammenfassung
+## Summary
 
-Seit dem ersten `1.4.1` Build kamen vor allem die komplette Magic-Wand-Feature-Linie, neue Crafting-Zwischenitems, neue Zauber-/Beam-/Targeting-/Licht-Visuals, Baby-Armor-Assets, separate Speer-In-Hand-Darstellung und Scythe-Damage-Anpassungen dazu. Insgesamt wurden im Vergleich zum ersten `1.4.1` Build ueber 120 Dateien geaendert oder neu hinzugefuegt.
+Since the first `1.4.1` build, the main additions were the full Magic Wand feature line, new intermediate crafting items, new spell/beam/targeting/light visuals, baby armor assets, separate spear in-hand rendering, and scythe damage adjustments. In total, more than 120 files were changed or added compared to the first `1.4.1` build.

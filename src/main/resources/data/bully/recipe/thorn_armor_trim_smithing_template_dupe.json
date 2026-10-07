@@ -1,0 +1,18 @@
+{
+  "type":  "minecraft:crafting_shaped",
+  "category":  "misc",
+  "pattern":  [
+    "DTD",
+    "DCD",
+    "DDD"
+  ],
+  "key":  {
+    "D":  "minecraft:diamond",
+    "C":  "minecraft:cactus",
+    "T":  "bully:thorn_armor_trim_smithing_template"
+  },
+  "result":  {
+    "id":  "bully:thorn_armor_trim_smithing_template",
+    "count":  2
+  }
+}

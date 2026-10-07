@@ -1,0 +1,6 @@
+{
+    "model":  {
+                  "model":  "bully:item/rosarium_crystal",
+                  "type":  "minecraft:model"
+              }
+}

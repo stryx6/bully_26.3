@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_boots",
+                   "bully:aetherald_boots",
+                   "bully:auronyx_boots",
+                   "bully:feralyth_boots",
+                   "bully:fluxite_boots",
+                   "bully:mystralite_boots",
+                   "bully:nebulazul_boots"
+               ]
+}

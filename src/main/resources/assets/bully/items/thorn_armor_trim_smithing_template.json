@@ -1,0 +1,6 @@
+{
+    "model":  {
+                  "model":  "bully:item/thorn_armor_trim_smithing_template",
+                  "type":  "minecraft:model"
+              }
+}

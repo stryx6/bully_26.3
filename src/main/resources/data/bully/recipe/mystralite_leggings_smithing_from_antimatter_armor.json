@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:diamond_block",
-  "base": "#bully:upgradeable_leg_armor",
-  "result": {
-    "id": "bully:mystralite_leggings"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:diamond_block",
+    "base":  "#bully:upgrade_targets/mystralite_leggings",
+    "result":  {
+                   "id":  "bully:mystralite_leggings"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

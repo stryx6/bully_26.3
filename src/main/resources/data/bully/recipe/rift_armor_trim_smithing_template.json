@@ -1,0 +1,18 @@
+{
+  "type":  "minecraft:crafting_shaped",
+  "category":  "misc",
+  "pattern":  [
+    "SES",
+    "SDS",
+    "SES"
+  ],
+  "key":  {
+    "E":  "minecraft:amethyst_shard",
+    "D":  "bully:dark_star",
+    "S":  "minecraft:obsidian"
+  },
+  "result":  {
+    "id":  "bully:rift_armor_trim_smithing_template",
+    "count":  4
+  }
+}

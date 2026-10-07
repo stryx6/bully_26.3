@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:diamond_block",
-  "base": "#bully:upgradeable_head_armor",
-  "result": {
-    "id": "bully:mystralite_helmet"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:diamond_block",
+    "base":  "#bully:upgrade_targets/mystralite_helmet",
+    "result":  {
+                   "id":  "bully:mystralite_helmet"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

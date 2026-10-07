@@ -21,6 +21,12 @@ repositories {
 loom {
 	splitEnvironmentSourceSets()
 
+	runs {
+		server {
+			runDir 'run/test-server'
+		}
+	}
+
 	mods {
 		"bully" {
 			sourceSet sourceSets.main
@@ -51,6 +57,17 @@ sourceSets {
 		java {
 			srcDirs = ["src/client/java"]
 		}
+	}
+}
+
+// Isolated gameplay checks; test classes are not included in the Bully release JAR.
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "bully-port-test"
+		enableGameTests = false
+		enableClientGameTests = true
+		eula = true
 	}
 }
 

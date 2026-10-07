@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:gold_block",
-  "base": "#bully:upgradeable_chest_armor",
-  "result": {
-    "id": "bully:auronyx_chestplate"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:gold_block",
+    "base":  "#bully:upgrade_targets/auronyx_chestplate",
+    "result":  {
+                   "id":  "bully:auronyx_chestplate"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

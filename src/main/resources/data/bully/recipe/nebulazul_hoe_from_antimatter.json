@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_hoes",
-  "addition": "minecraft:lapis_block",
-  "result": {
-    "id": "bully:nebulazul_hoe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/nebulazul_hoe",
+    "addition":  "minecraft:lapis_block",
+    "result":  {
+                   "id":  "bully:nebulazul_hoe"
+               }
 }

@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:iron_block",
-  "base":  "#bully:upgradeable_swords",
-  "result":
-  {
-    "id":  "bully:antimatter_sword"
-  },
-  "template":  "bully:tool_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:iron_block",
+    "base":  "#bully:upgrade_targets/antimatter_sword",
+    "result":  {
+                   "id":  "bully:antimatter_sword"
+               },
+    "template":  "bully:tool_upgrade_smithing_template"
 }

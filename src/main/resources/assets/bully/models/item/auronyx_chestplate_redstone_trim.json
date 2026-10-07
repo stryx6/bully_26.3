@@ -1,0 +1,6 @@
+{
+    "parent":  "bully:item/auronyx_chestplate",
+    "textures":  {
+                     "layer1":  "minecraft:trims/items/chestplate_trim_redstone"
+                 }
+}

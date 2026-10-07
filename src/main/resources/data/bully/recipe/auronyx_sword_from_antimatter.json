@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:gold_block",
-  "base":  "#bully:upgradeable_swords",
-  "result":
-  {
-    "id":  "bully:auronyx_sword"
-  },
-  "template":  "bully:tool_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:gold_block",
+    "base":  "#bully:upgrade_targets/auronyx_sword",
+    "result":  {
+                   "id":  "bully:auronyx_sword"
+               },
+    "template":  "bully:tool_upgrade_smithing_template"
 }

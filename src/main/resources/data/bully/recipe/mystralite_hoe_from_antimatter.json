@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_hoes",
-  "addition": "minecraft:diamond_block",
-  "result": {
-    "id": "bully:mystralite_hoe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/mystralite_hoe",
+    "addition":  "minecraft:diamond_block",
+    "result":  {
+                   "id":  "bully:mystralite_hoe"
+               }
 }

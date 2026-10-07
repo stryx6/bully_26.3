@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_axe",
+                   "bully:aetherald_axe",
+                   "bully:auronyx_axe",
+                   "bully:feralyth_axe",
+                   "bully:fluxite_axe",
+                   "bully:mystralite_axe",
+                   "bully:voidcrist_axe"
+               ]
+}

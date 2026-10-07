@@ -1,27 +1,19 @@
 {
-  "layers": {
-    "humanoid": [
-      {
-        "texture": "bully:mystralite"
-      }
-    ],
-    "humanoid_baby": [
-      {
-        "texture": "bully:mystralite"
-      }
-    ],
-    "humanoid_leggings": [
-      {
-        "texture": "bully:mystralite"
-      }
-    ]
-  },
-  "trim_overrides": [
-    {
-      "when": {
-        "material": "bully:antimatter"
-      },
-      "palette": "bully:antimatter"
-    }
-  ]
+    "layers":  {
+                   "humanoid":  [
+                                    {
+                                        "texture":  "bully:mystralite"
+                                    }
+                                ],
+                   "humanoid_baby":  [
+                                         {
+                                             "texture":  "bully:mystralite"
+                                         }
+                                     ],
+                   "humanoid_leggings":  [
+                                             {
+                                                 "texture":  "bully:mystralite"
+                                             }
+                                         ]
+               }
 }

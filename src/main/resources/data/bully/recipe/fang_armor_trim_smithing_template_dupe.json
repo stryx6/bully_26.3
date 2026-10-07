@@ -1,0 +1,18 @@
+{
+  "type":  "minecraft:crafting_shaped",
+  "category":  "misc",
+  "pattern":  [
+    "DFD",
+    "DPD",
+    "DDD"
+  ],
+  "key":  {
+    "D":  "minecraft:diamond",
+    "P":  "minecraft:packed_ice",
+    "F":  "bully:fang_armor_trim_smithing_template"
+  },
+  "result":  {
+    "id":  "bully:fang_armor_trim_smithing_template",
+    "count":  2
+  }
+}

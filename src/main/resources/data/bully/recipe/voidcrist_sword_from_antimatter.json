@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:amethyst_block",
-  "base":  "#bully:upgradeable_swords",
-  "result":
-  {
-    "id":  "bully:voidcrist_sword"
-  },
-  "template":  "bully:tool_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:amethyst_block",
+    "base":  "#bully:upgrade_targets/voidcrist_sword",
+    "result":  {
+                   "id":  "bully:voidcrist_sword"
+               },
+    "template":  "bully:tool_upgrade_smithing_template"
 }

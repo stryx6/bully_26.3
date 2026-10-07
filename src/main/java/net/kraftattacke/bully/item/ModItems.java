@@ -100,6 +100,18 @@ public final class ModItems {
 					.fireResistant()
 	);
 
+	public static final Item ROSARIUM_CRYSTAL = register(
+			"rosarium_crystal", Item::new,
+			new Item.Properties().trimMaterial(ResourceKey.create(
+					Registries.TRIM_MATERIAL, Identifier.fromNamespaceAndPath(Bully.MOD_ID, "rosarium")))
+	);
+
+	public static final Item ECHO_ARMOR_TRIM_SMITHING_TEMPLATE = registerTrimTemplate("echo");
+	public static final Item RIFT_ARMOR_TRIM_SMITHING_TEMPLATE = registerTrimTemplate("rift");
+	public static final Item CROWN_ARMOR_TRIM_SMITHING_TEMPLATE = registerTrimTemplate("crown");
+	public static final Item FANG_ARMOR_TRIM_SMITHING_TEMPLATE = registerTrimTemplate("fang");
+	public static final Item THORN_ARMOR_TRIM_SMITHING_TEMPLATE = registerTrimTemplate("thorn");
+
 	public static final Item AETHERALD = register(
 			"aetherald",
 			Item::new,
@@ -158,17 +170,17 @@ public final class ModItems {
 	public static final Item MAGIC_CRYSTAL = register(
 			"magic_crystal",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.rarity(Rarity.RARE)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item DARK_STAR = register(
 			"dark_star",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_UPGRADE_SMITHING_TEMPLATE = register(
@@ -244,128 +256,128 @@ public final class ModItems {
 	public static final Item ANTIMATTER_SWORD = register(
 			"antimatter_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(AntimatterToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AETHERALD_SWORD = register(
 			"aetherald_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(AetheraldToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AURONYX_SWORD = register(
 			"auronyx_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(AuronyxToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FERALYTH_SWORD = register(
 			"feralyth_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(FeralythToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FLUXITE_SWORD = register(
 			"fluxite_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(FluxiteToolMaterial.INSTANCE, 5.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item MYSTRALITE_SWORD = register(
 			"mystralite_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(MystraliteToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item NEBULAZUL_SWORD = register(
 			"nebulazul_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(NebulazulToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item VOIDCRIST_SWORD = register(
 			"voidcrist_sword",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.sword(VoidcristToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_PICKAXE = register(
 			"antimatter_pickaxe",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.pickaxe(AntimatterToolMaterial.INSTANCE, 1.0F, -2.8F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_AXE = register(
 			"antimatter_axe",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.axe(AntimatterToolMaterial.INSTANCE, 6.0F, -3.0F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_SHOVEL = register(
 			"antimatter_shovel",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.shovel(AntimatterToolMaterial.INSTANCE, 1.5F, -3.0F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_HOE = register(
 			"antimatter_hoe",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.hoe(AntimatterToolMaterial.INSTANCE, -4.0F, 0.0F)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_SCYTHE = register(
 			"antimatter_scythe",
 			ScytheItem::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.rarity(Rarity.EPIC)
 					.durability(SCYTHE_STATS.durability())
 					.component(DataComponents.TOOL, MaceItem.createToolProperties())
 					.component(DataComponents.WEAPON, new Weapon(1))
 					.attributes(createScytheAttributes(SCYTHE_STATS.attackDamage(), -2.8))
 					.repairable(AntimatterToolMaterial.REPAIRS_ANTIMATTER_TOOLS)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_SPEAR = register(
 			"antimatter_spear",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					// Match vanilla spear tuning; ToolMaterial controls durability/repair.
 					.spear(
 							AntimatterToolMaterial.INSTANCE,
@@ -374,24 +386,25 @@ public final class ModItems {
 							5.10F, 8.75F, 4.60F
 					)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.attributes(createScytheAttributes(6.0, 1.0 / 1.15 - 4.0))
+					.fireResistant())
 	);
 
 	public static final Item MAGIC_WAND = register(
 			"magic_wand",
 			MagicWandItem::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.stacksTo(1)
-					.durability(768)
+					.durability(1250)
 					.enchantable(18)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_ELYTRA = register(
 			"antimatter_elytra",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					// Vanilla elytra: 432. Boost this significantly.
 					.durability(1296)
 					.rarity(Rarity.EPIC)
@@ -405,293 +418,293 @@ public final class ModItems {
 									.build()
 					)
 					.repairable(ANTIMATTER)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_HELMET = register(
 			"antimatter_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AntimatterArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AETHERALD_HELMET = register(
 			"aetherald_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AetheraldArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FLUXITE_HELMET = register(
 			"fluxite_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FluxiteArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item NEBULAZUL_HELMET = register(
 			"nebulazul_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(NebulazulArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item MYSTRALITE_HELMET = register(
 			"mystralite_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(MystraliteArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item VOIDCRIST_HELMET = register(
 			"voidcrist_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(VoidcristArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AURONYX_HELMET = register(
 			"auronyx_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AuronyxArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FERALYTH_HELMET = register(
 			"feralyth_helmet",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FeralythArmorMaterial.INSTANCE, ArmorType.HELMET)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_CHESTPLATE = register(
 			"antimatter_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AntimatterArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AETHERALD_CHESTPLATE = register(
 			"aetherald_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AetheraldArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FLUXITE_CHESTPLATE = register(
 			"fluxite_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FluxiteArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item NEBULAZUL_CHESTPLATE = register(
 			"nebulazul_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(NebulazulArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item MYSTRALITE_CHESTPLATE = register(
 			"mystralite_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(MystraliteArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item VOIDCRIST_CHESTPLATE = register(
 			"voidcrist_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(VoidcristArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AURONYX_CHESTPLATE = register(
 			"auronyx_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AuronyxArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FERALYTH_CHESTPLATE = register(
 			"feralyth_chestplate",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FeralythArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_LEGGINGS = register(
 			"antimatter_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AntimatterArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AETHERALD_LEGGINGS = register(
 			"aetherald_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AetheraldArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FLUXITE_LEGGINGS = register(
 			"fluxite_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FluxiteArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item NEBULAZUL_LEGGINGS = register(
 			"nebulazul_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(NebulazulArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item MYSTRALITE_LEGGINGS = register(
 			"mystralite_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(MystraliteArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item VOIDCRIST_LEGGINGS = register(
 			"voidcrist_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(VoidcristArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 	public static final Item AURONYX_LEGGINGS = register(
 			"auronyx_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AuronyxArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 	public static final Item FERALYTH_LEGGINGS = register(
 			"feralyth_leggings",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FeralythArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item ANTIMATTER_BOOTS = register(
 			"antimatter_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AntimatterArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AETHERALD_BOOTS = register(
 			"aetherald_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AetheraldArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FLUXITE_BOOTS = register(
 			"fluxite_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FluxiteArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item NEBULAZUL_BOOTS = register(
 			"nebulazul_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(NebulazulArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item MYSTRALITE_BOOTS = register(
 			"mystralite_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(MystraliteArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item VOIDCRIST_BOOTS = register(
 			"voidcrist_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(VoidcristArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item AURONYX_BOOTS = register(
 			"auronyx_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(AuronyxArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item FERALYTH_BOOTS = register(
 			"feralyth_boots",
 			Item::new,
-			new Item.Properties()
+			ExplosionResistantItems.protect(new Item.Properties()
 					.humanoidArmor(FeralythArmorMaterial.INSTANCE, ArmorType.BOOTS)
 					.rarity(Rarity.EPIC)
-					.fireResistant()
+					.fireResistant())
 	);
 
 	public static final Item MUSIC_DISC_ONRYO = register(
@@ -767,6 +780,11 @@ public final class ModItems {
 	);
 
 	private ModItems() {
+	}
+
+	private static Item registerTrimTemplate(String pattern) {
+		return register(pattern + "_armor_trim_smithing_template",
+				SmithingTemplateItem::createArmorTrimTemplate, new Item.Properties());
 	}
 
 	public static void register() {

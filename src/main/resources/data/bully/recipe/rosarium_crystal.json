@@ -1,0 +1,13 @@
+{
+    "type":  "minecraft:crafting_shapeless",
+    "category":  "misc",
+    "ingredients": [
+        "minecraft:ghast_tear",
+        "minecraft:pink_petals",
+        "minecraft:amethyst_shard"
+    ],
+    "result":  {
+                   "id":  "bully:rosarium_crystal",
+                   "count":  1
+               }
+}

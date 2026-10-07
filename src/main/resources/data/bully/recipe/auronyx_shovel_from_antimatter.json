@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_shovels",
-  "addition": "minecraft:gold_block",
-  "result": {
-    "id": "bully:auronyx_shovel"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/auronyx_shovel",
+    "addition":  "minecraft:gold_block",
+    "result":  {
+                   "id":  "bully:auronyx_shovel"
+               }
 }

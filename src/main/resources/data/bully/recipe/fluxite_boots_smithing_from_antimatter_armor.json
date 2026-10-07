@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:redstone_block",
-  "base": "#bully:upgradeable_foot_armor",
-  "result": {
-    "id": "bully:fluxite_boots"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:redstone_block",
+    "base":  "#bully:upgrade_targets/fluxite_boots",
+    "result":  {
+                   "id":  "bully:fluxite_boots"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

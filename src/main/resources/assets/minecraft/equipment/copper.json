@@ -1,33 +1,27 @@
 {
-  "layers": {
-    "humanoid": [
-      {
-        "texture": "minecraft:copper"
-      }
-    ],
-    "humanoid_baby": [
-      {
-        "texture": "minecraft:copper"
-      }
-    ],
-    "humanoid_leggings": [
-      {
-        "texture": "minecraft:copper"
-      }
-    ]
-  },
-  "trim_overrides": [
-    {
-      "palette": "minecraft:trim/copper_darker",
-      "when": {
-        "material": "minecraft:copper"
-      }
-    },
-    {
-      "palette": "bully:antimatter",
-      "when": {
-        "material": "bully:antimatter"
-      }
-    }
-  ]
+    "layers":  {
+                   "humanoid":  [
+                                    {
+                                        "texture":  "minecraft:copper"
+                                    }
+                                ],
+                   "humanoid_baby":  [
+                                         {
+                                             "texture":  "minecraft:copper"
+                                         }
+                                     ],
+                   "humanoid_leggings":  [
+                                             {
+                                                 "texture":  "minecraft:copper"
+                                             }
+                                         ]
+               },
+    "trim_overrides":  [
+                           {
+                               "palette":  "minecraft:trim/copper_darker",
+                               "when":  {
+                                            "material":  "minecraft:copper"
+                                        }
+                           }
+                       ]
 }

@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:lapis_block",
-  "base":  "#bully:upgradeable_swords",
-  "result":
-  {
-    "id":  "bully:nebulazul_sword"
-  },
-  "template":  "bully:tool_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:lapis_block",
+    "base":  "#bully:upgrade_targets/nebulazul_sword",
+    "result":  {
+                   "id":  "bully:nebulazul_sword"
+               },
+    "template":  "bully:tool_upgrade_smithing_template"
 }

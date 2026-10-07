@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer0":  "bully:item/fang_armor_trim_smithing_template"
+                 },
+    "parent":  "minecraft:item/generated"
+}

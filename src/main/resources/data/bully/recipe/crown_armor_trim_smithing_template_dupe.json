@@ -1,0 +1,18 @@
+{
+  "type":  "minecraft:crafting_shaped",
+  "category":  "misc",
+  "pattern":  [
+    "DED",
+    "DTD",
+    "DDD"
+  ],
+  "key":  {
+    "D":  "minecraft:diamond",
+    "T":  "minecraft:gold_block",
+    "E":  "bully:crown_armor_trim_smithing_template"
+  },
+  "result":  {
+    "id":  "bully:crown_armor_trim_smithing_template",
+    "count":  2
+  }
+}

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "minecraft:emerald_block",
-  "base": "#bully:upgradeable_foot_armor",
+  "base": "#bully:upgrade_targets/aetherald_boots",
   "result": {
     "id": "bully:aetherald_boots"
   },

@@ -1,0 +1,18 @@
+{
+  "type":  "minecraft:crafting_shaped",
+  "category":  "misc",
+  "pattern":  [
+    "SES",
+    "SDS",
+    "SES"
+  ],
+  "key":  {
+    "E":  "minecraft:dead_bush",
+    "D":  "bully:dark_star",
+    "S":  "minecraft:cactus"
+  },
+  "result":  {
+    "id":  "bully:thorn_armor_trim_smithing_template",
+    "count":  4
+  }
+}

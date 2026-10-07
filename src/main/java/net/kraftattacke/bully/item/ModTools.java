@@ -98,34 +98,37 @@ public final class ModTools {
 	private static MaterialToolSet registerMaterialSet(String name, Item sword, ToolMaterial material, TagKey<Item> repairTag) {
 		return new MaterialToolSet(
 				sword,
-				register(name + "_pickaxe", Item::new, new Item.Properties()
+				register(name + "_pickaxe", Item::new, ExplosionResistantItems.protect(new Item.Properties()
 						.pickaxe(material, 1.0F, -2.8F)
 						.rarity(Rarity.EPIC)
-						.fireResistant()),
-				register(name + "_axe", Item::new, new Item.Properties()
+						.fireResistant())),
+				register(name + "_axe", Item::new, ExplosionResistantItems.protect(new Item.Properties()
 						.axe(material, 6.0F, -3.0F)
 						.rarity(Rarity.EPIC)
-						.fireResistant()),
-				register(name + "_shovel", Item::new, new Item.Properties()
+						.fireResistant())),
+				register(name + "_shovel", Item::new, ExplosionResistantItems.protect(new Item.Properties()
 						.shovel(material, 1.5F, -3.0F)
 						.rarity(Rarity.EPIC)
-						.fireResistant()),
-				register(name + "_hoe", Item::new, new Item.Properties()
+						.fireResistant())),
+				register(name + "_hoe", Item::new, ExplosionResistantItems.protect(new Item.Properties()
 						.hoe(material, -4.0F, 0.0F)
 						.rarity(Rarity.EPIC)
-						.fireResistant()),
-				register(name + "_scythe", ScytheItem::new, new Item.Properties()
+						.fireResistant())),
+				register(name + "_scythe", ScytheItem::new, ExplosionResistantItems.protect(new Item.Properties()
 						.rarity(Rarity.EPIC)
 						.durability(SCYTHE_STATS.durability())
 						.component(DataComponents.TOOL, MaceItem.createToolProperties())
 						.component(DataComponents.WEAPON, new Weapon(1))
 						.attributes(createScytheAttributes(SCYTHE_STATS.attackDamage(), -2.8))
 						.repairable(repairTag)
-						.fireResistant()),
-				register(name + "_spear", Item::new, new Item.Properties()
-						.spear(material, 1.15F, 1.20F, 0.40F, 2.50F, 7.00F, 5.50F, 5.10F, 8.75F, 4.60F)
+						.fireResistant())),
+				register(name + "_spear", Item::new, ExplosionResistantItems.protect(new Item.Properties()
+						.spear(material, 1.15F, 1.25F, 0.40F, 2.50F, 7.00F, 5.50F, 5.10F, 8.75F, 4.60F)
+						.attributes(createScytheAttributes(6.0, 1.0 / 1.15 - 4.0))
 						.rarity(Rarity.EPIC)
-						.fireResistant())
+						.fireResistant()))
+
+
 		);
 	}
 

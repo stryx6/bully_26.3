@@ -1,33 +1,27 @@
 {
-  "layers": {
-    "humanoid": [
-      {
-        "texture": "minecraft:netherite"
-      }
-    ],
-    "humanoid_baby": [
-      {
-        "texture": "minecraft:netherite"
-      }
-    ],
-    "humanoid_leggings": [
-      {
-        "texture": "minecraft:netherite"
-      }
-    ]
-  },
-  "trim_overrides": [
-    {
-      "palette": "minecraft:trim/netherite_darker",
-      "when": {
-        "material": "minecraft:netherite"
-      }
-    },
-    {
-      "palette": "bully:antimatter",
-      "when": {
-        "material": "bully:antimatter"
-      }
-    }
-  ]
+    "layers":  {
+                   "humanoid":  [
+                                    {
+                                        "texture":  "minecraft:netherite"
+                                    }
+                                ],
+                   "humanoid_baby":  [
+                                         {
+                                             "texture":  "minecraft:netherite"
+                                         }
+                                     ],
+                   "humanoid_leggings":  [
+                                             {
+                                                 "texture":  "minecraft:netherite"
+                                             }
+                                         ]
+               },
+    "trim_overrides":  [
+                           {
+                               "palette":  "minecraft:trim/netherite_darker",
+                               "when":  {
+                                            "material":  "minecraft:netherite"
+                                        }
+                           }
+                       ]
 }

@@ -1,6 +1,96 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "bully:item/feralyth_leggings"
-  }
+    "model":  {
+                  "type":  "minecraft:select",
+                  "property":  "minecraft:trim_material",
+                  "cases":  [
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_quartz_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:quartz"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_iron_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:iron"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_netherite_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:netherite"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_redstone_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:redstone"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_copper_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:copper"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_gold_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:gold"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_emerald_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:emerald"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_diamond_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:diamond"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_lapis_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:lapis"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_amethyst_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:amethyst"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_resin_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:resin"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/feralyth_leggings_rosarium_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "bully:rosarium"
+                                }
+                            ],
+                  "fallback":  {
+                                   "model":  "bully:item/feralyth_leggings",
+                                   "type":  "minecraft:model"
+                               }
+              }
 }

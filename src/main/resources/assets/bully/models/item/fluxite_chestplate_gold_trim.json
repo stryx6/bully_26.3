@@ -1,0 +1,6 @@
+{
+    "parent":  "bully:item/fluxite_chestplate",
+    "textures":  {
+                     "layer1":  "minecraft:trims/items/chestplate_trim_gold"
+                 }
+}

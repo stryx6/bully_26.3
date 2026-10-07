@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_scythes",
-  "addition": "minecraft:redstone_block",
-  "result": {
-    "id": "bully:fluxite_scythe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/fluxite_scythe",
+    "addition":  "minecraft:redstone_block",
+    "result":  {
+                   "id":  "bully:fluxite_scythe"
+               }
 }

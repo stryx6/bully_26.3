@@ -51,8 +51,9 @@ public class MagicWandItem extends Item {
 	private static final String MODE_TAG = "BullyMagicWandMode";
 	private static final int TICKS_PER_SECOND = 20;
 	private static final int USE_DURATION_TICKS = 72000;
-	private static final int MIN_CHARGE_TICKS = 50;
-	private static final int FULL_CHARGE_TICKS = 180;
+	private static final int MIN_CHARGE_TICKS = 10;
+	private static final int FULL_CHARGE_TICKS = 200;
+	private static final int CHARGE_STEP_TICKS = 20;
 	private static final int CHARGE_SOUND_INTERVAL_TICKS = 16;
 	private static final ResourceKey<DamageType> EMBER_LANCE_DAMAGE = damageType("magic_wand_ember_lance");
 	private static final ResourceKey<DamageType> FROST_BURST_DAMAGE = damageType("magic_wand_frost_burst");
@@ -61,8 +62,8 @@ public class MagicWandItem extends Item {
 	// Spell tuning: change damage, range, radius, healing, effects and cooldowns here.
 	private static final double EMBER_LANCE_BASE_RANGE = 40.0;
 	private static final double EMBER_LANCE_CHARGED_RANGE_BONUS = 20.0;
-	private static final float EMBER_LANCE_BASE_DAMAGE = 20.0F;
-	private static final float EMBER_LANCE_CHARGED_DAMAGE_BONUS = 10.0F;
+	private static final float EMBER_LANCE_BASE_DAMAGE = 10.0F;
+	private static final float EMBER_LANCE_CHARGED_DAMAGE_BONUS = 50.0F;
 	private static final float EMBER_LANCE_BASE_FIRE_SECONDS = 5.0F;
 	private static final float EMBER_LANCE_CHARGED_FIRE_SECONDS_BONUS = 5.0F;
 	private static final int EMBER_LANCE_COOLDOWN_TICKS = 10;
@@ -91,9 +92,9 @@ public class MagicWandItem extends Item {
 	private static final float LIFE_BLOOM_CHARGED_HOSTILE_DAMAGE_BONUS = 3.0F;
 	private static final int LIFE_BLOOM_COOLDOWN_TICKS = 50;
 
-	// Effect duration tuning. Values are seconds; charged bonus is added at full charge.
-	private static final float FROST_BURST_SLOWNESS_SECONDS = 4.0F;
-	private static final float FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS = 4.0F;
+	// Effect duration tuning in seconds. Bonuses scale with charge; negative effects use 20-tick steps.
+	private static final float FROST_BURST_SLOWNESS_SECONDS = 5.0F;
+	private static final float FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS = 25.0F;
 	private static final float LIFE_BLOOM_SATURATION_SECONDS = 5F;
 	private static final float LIFE_BLOOM_CHARGED_SATURATION_SECONDS_BONUS = 5F;
 	private static final float LIFE_BLOOM_REGEN_SECONDS = 5F;
@@ -101,13 +102,13 @@ public class MagicWandItem extends Item {
 	private static final float LIFE_BLOOM_ABSORPTION_SECONDS = 6.0F;
 	private static final float LIFE_BLOOM_CHARGED_ABSORPTION_SECONDS_BONUS = 4.0F;
 	private static final float LIFE_BLOOM_POISON_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS = 5.0F;
+	private static final float LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS = 25.0F;
 	private static final float LIFE_BLOOM_WITHER_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS = 5.0F;
+	private static final float LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS = 25.0F;
 	private static final float LIFE_BLOOM_DARKNESS_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS = 10.0F;
+	private static final float LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS = 25.0F;
 	private static final float LIFE_BLOOM_WEAKNESS_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS = 5.0F;
+	private static final float LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS = 25.0F;
 
 	public MagicWandItem(Properties properties) {
 		super(properties);
@@ -158,10 +159,13 @@ public class MagicWandItem extends Item {
 		SpellMode mode = getMode(stack);
 		InteractionHand hand = livingEntity.getUsedItemHand();
 		float charge = Math.min(1.0F, chargeTicks / (float) FULL_CHARGE_TICKS);
+		// Integer division keeps the selected values constant between 20-tick boundaries.
+		float steppedCharge = Math.max(0, Math.min(chargeTicks, FULL_CHARGE_TICKS) / CHARGE_STEP_TICKS)
+				/ (float) (FULL_CHARGE_TICKS / CHARGE_STEP_TICKS);
 		boolean cast = switch (mode) {
-			case RED -> castEmberLance(serverLevel, player, hand, charge);
-			case BLUE -> castFrostBurst(serverLevel, player, hand, charge);
-			case GREEN -> castLifeBloom(serverLevel, player, hand, charge);
+			case RED -> castEmberLance(serverLevel, player, hand, charge, steppedCharge);
+			case BLUE -> castFrostBurst(serverLevel, player, hand, charge, steppedCharge);
+			case GREEN -> castLifeBloom(serverLevel, player, hand, charge, steppedCharge);
 		};
 
 		if (cast) {
@@ -218,7 +222,7 @@ public class MagicWandItem extends Item {
 		return 0xFF000000 | getMode(stack).particleColor;
 	}
 
-	private static boolean castEmberLance(ServerLevel level, Player player, InteractionHand hand, float charge) {
+	private static boolean castEmberLance(ServerLevel level, Player player, InteractionHand hand, float charge, float steppedCharge) {
 		double range = EMBER_LANCE_BASE_RANGE + charge * EMBER_LANCE_CHARGED_RANGE_BONUS;
 		SpellTarget target = findTarget(level, player, range);
 		Vec3 origin = getWandParticleOrigin(player, hand);
@@ -232,12 +236,12 @@ public class MagicWandItem extends Item {
 
 		burnBlockingShield(level, target.entity(), charge);
 		DamageSource source = createDamageSource(level, SpellMode.RED, player);
-		target.entity().hurtServer(level, source, EMBER_LANCE_BASE_DAMAGE + charge * EMBER_LANCE_CHARGED_DAMAGE_BONUS);
+		target.entity().hurtServer(level, source, EMBER_LANCE_BASE_DAMAGE + steppedCharge * EMBER_LANCE_CHARGED_DAMAGE_BONUS);
 		target.entity().igniteForSeconds(EMBER_LANCE_BASE_FIRE_SECONDS + charge * EMBER_LANCE_CHARGED_FIRE_SECONDS_BONUS);
 		return true;
 	}
 
-	private static boolean castFrostBurst(ServerLevel level, Player player, InteractionHand hand, float charge) {
+	private static boolean castFrostBurst(ServerLevel level, Player player, InteractionHand hand, float charge, float steppedCharge) {
 		SpellTarget target = findTarget(level, player, FROST_BURST_BASE_RANGE + charge * FROST_BURST_CHARGED_RANGE_BONUS);
 		Vec3 center = target.location();
 		double radius = FROST_BURST_BASE_RADIUS + charge * FROST_BURST_CHARGED_RADIUS_BONUS;
@@ -254,7 +258,7 @@ public class MagicWandItem extends Item {
 		DamageSource source = createDamageSource(level, SpellMode.BLUE, player);
 		for (LivingEntity livingTarget : targets) {
 			livingTarget.hurtServer(level, source, FROST_BURST_BASE_DAMAGE + charge * FROST_BURST_CHARGED_DAMAGE_BONUS);
-			livingTarget.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, effectDurationTicks(FROST_BURST_SLOWNESS_SECONDS, FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS, charge), 4, false, true, true));
+			livingTarget.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, effectDurationTicks(FROST_BURST_SLOWNESS_SECONDS, FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS, steppedCharge), 4, false, true, true));
 			Vec3 push = livingTarget.position().subtract(center);
 			if (push.lengthSqr() < 0.01) {
 				push = player.getLookAngle();
@@ -265,7 +269,7 @@ public class MagicWandItem extends Item {
 		return true;
 	}
 
-	private static boolean castLifeBloom(ServerLevel level, Player player, InteractionHand hand, float charge) {
+	private static boolean castLifeBloom(ServerLevel level, Player player, InteractionHand hand, float charge, float steppedCharge) {
 		SpellTarget target = findTarget(level, player, LIFE_BLOOM_BASE_RANGE + charge * LIFE_BLOOM_CHARGED_RANGE_BONUS);
 		Vec3 center = target.location();
 		double radius = LIFE_BLOOM_BASE_RADIUS + charge * LIFE_BLOOM_CHARGED_RADIUS_BONUS;
@@ -286,10 +290,10 @@ public class MagicWandItem extends Item {
 			}
 
 			livingTarget.hurtServer(level, source, LIFE_BLOOM_HOSTILE_DAMAGE + charge * LIFE_BLOOM_CHARGED_HOSTILE_DAMAGE_BONUS);
-			livingTarget.addEffect(new MobEffectInstance(MobEffects.DARKNESS, effectDurationTicks(LIFE_BLOOM_DARKNESS_SECONDS, LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS, charge), charge > 0.75F ? 1 : 0, false, true, true));
-			livingTarget.addEffect(new MobEffectInstance(MobEffects.WITHER, effectDurationTicks(LIFE_BLOOM_WITHER_SECONDS, LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS, charge), charge > 0.75F ? 1 : 0, false, true, true));
-			livingTarget.addEffect(new MobEffectInstance(MobEffects.POISON, effectDurationTicks(LIFE_BLOOM_POISON_SECONDS, LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS, charge), charge > 0.75F ? 1 : 0, false, true, true));
-			livingTarget.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, effectDurationTicks(LIFE_BLOOM_WEAKNESS_SECONDS, LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS, charge), 0, false, true, true));
+			livingTarget.addEffect(new MobEffectInstance(MobEffects.DARKNESS, effectDurationTicks(LIFE_BLOOM_DARKNESS_SECONDS, LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
+			livingTarget.addEffect(new MobEffectInstance(MobEffects.WITHER, effectDurationTicks(LIFE_BLOOM_WITHER_SECONDS, LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
+			livingTarget.addEffect(new MobEffectInstance(MobEffects.POISON, effectDurationTicks(LIFE_BLOOM_POISON_SECONDS, LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
+			livingTarget.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, effectDurationTicks(LIFE_BLOOM_WEAKNESS_SECONDS, LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS, steppedCharge), 0, false, true, true));
 			spawnLifeBloomTargetParticles(level, livingTarget, false, charge);
 		}
 

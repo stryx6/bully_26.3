@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:iron_block",
-  "base":  "#bully:upgradeable_foot_armor",
-  "result":
-  {
-    "id":  "bully:antimatter_boots"
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:iron_block",
+  "base": "#bully:upgrade_targets/antimatter_boots",
+  "result": {
+    "id": "bully:antimatter_boots"
   },
-  "template":  "bully:armor_upgrade_smithing_template"
+  "template": "bully:armor_upgrade_smithing_template"
 }

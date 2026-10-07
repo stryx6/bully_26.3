@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_spears",
-  "addition": "minecraft:resin_bricks",
-  "result": {
-    "id": "bully:feralyth_spear"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/feralyth_spear",
+    "addition":  "minecraft:resin_bricks",
+    "result":  {
+                   "id":  "bully:feralyth_spear"
+               }
 }

@@ -1,0 +1,9 @@
+Hacker Menu v4 / hackermenu-4.0.jar
+Original author: Benny Smith (as declared in META-INF/neoforge.mods.toml).
+Original license declaration: All Rights Reserved.
+Original SHA-256: 74e42a44b4415eeec3b9b1d3e63bcf18b0c1ddab82350e8659307fb3f38db34e
+
+The Fabric port preserves the original gameplay procedures and includes the
+original assets/hackermenu resources. Bully's MIT license does not relicense
+those original resources or grant redistribution rights to Hacker Menu.
+The integration was prepared from the locally supplied JAR for the requester.

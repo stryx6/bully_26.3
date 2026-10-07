@@ -1,6 +1,96 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "bully:item/antimatter_helmet"
-  }
+    "model":  {
+                  "type":  "minecraft:select",
+                  "property":  "minecraft:trim_material",
+                  "cases":  [
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_quartz_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:quartz"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_iron_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:iron"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_netherite_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:netherite"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_redstone_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:redstone"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_copper_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:copper"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_gold_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:gold"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_emerald_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:emerald"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_diamond_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:diamond"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_lapis_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:lapis"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_amethyst_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:amethyst"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_resin_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:resin"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/antimatter_helmet_rosarium_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "bully:rosarium"
+                                }
+                            ],
+                  "fallback":  {
+                                   "model":  "bully:item/antimatter_helmet",
+                                   "type":  "minecraft:model"
+                               }
+              }
 }

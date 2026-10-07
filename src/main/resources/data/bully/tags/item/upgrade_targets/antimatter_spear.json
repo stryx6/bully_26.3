@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:aetherald_spear",
+                   "bully:auronyx_spear",
+                   "bully:feralyth_spear",
+                   "bully:fluxite_spear",
+                   "bully:mystralite_spear",
+                   "bully:nebulazul_spear",
+                   "bully:voidcrist_spear"
+               ]
+}

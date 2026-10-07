@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_hoes",
-  "addition": "minecraft:gold_block",
-  "result": {
-    "id": "bully:auronyx_hoe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/auronyx_hoe",
+    "addition":  "minecraft:gold_block",
+    "result":  {
+                   "id":  "bully:auronyx_hoe"
+               }
 }

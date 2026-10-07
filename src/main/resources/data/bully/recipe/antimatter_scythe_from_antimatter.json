@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_scythes",
-  "addition": "minecraft:iron_block",
-  "result": {
-    "id": "bully:antimatter_scythe"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/antimatter_scythe",
+    "addition":  "minecraft:iron_block",
+    "result":  {
+                   "id":  "bully:antimatter_scythe"
+               }
 }

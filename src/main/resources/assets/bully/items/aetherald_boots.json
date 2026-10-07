@@ -1,6 +1,96 @@
 {
-  "model": {
-    "type": "minecraft:model",
-    "model": "bully:item/aetherald_boots"
-  }
+    "model":  {
+                  "type":  "minecraft:select",
+                  "property":  "minecraft:trim_material",
+                  "cases":  [
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_quartz_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:quartz"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_iron_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:iron"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_netherite_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:netherite"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_redstone_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:redstone"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_copper_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:copper"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_gold_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:gold"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_emerald_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:emerald"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_diamond_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:diamond"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_lapis_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:lapis"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_amethyst_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:amethyst"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_resin_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "minecraft:resin"
+                                },
+                                {
+                                    "model":  {
+                                                  "model":  "bully:item/aetherald_boots_rosarium_trim",
+                                                  "type":  "minecraft:model"
+                                              },
+                                    "when":  "bully:rosarium"
+                                }
+                            ],
+                  "fallback":  {
+                                   "model":  "bully:item/aetherald_boots",
+                                   "type":  "minecraft:model"
+                               }
+              }
 }

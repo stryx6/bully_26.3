@@ -11,7 +11,7 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/tomatobato565/bully565.git"
 	},
-	"license": "MIT",
+	"license": ["MIT", "LicenseRef-HackerMenu-All-Rights-Reserved"],
 	"icon": "assets/bully/icon.png",
 	"environment": "*",
 	"entrypoints": {

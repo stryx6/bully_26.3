@@ -20,6 +20,11 @@ public class ModBlocks {
 			Block::new,
 			BlockBehaviour.Properties.of().strength(4.0F).requiresCorrectToolForDrops().sound(SoundType.NETHERITE_BLOCK)
 	);
+	public static final Block ROSARIUM_CRYSTAL_BLOCK = registerBlock(
+			"rosarium_crystal_block",
+			Block::new,
+			BlockBehaviour.Properties.of().strength(1.5F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)
+	);
 
 	private static <T extends Block> T registerBlock(
 			String name,

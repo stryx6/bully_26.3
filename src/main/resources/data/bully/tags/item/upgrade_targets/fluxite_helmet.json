@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_helmet",
+                   "bully:aetherald_helmet",
+                   "bully:auronyx_helmet",
+                   "bully:feralyth_helmet",
+                   "bully:mystralite_helmet",
+                   "bully:nebulazul_helmet",
+                   "bully:voidcrist_helmet"
+               ]
+}

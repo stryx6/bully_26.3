@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_spears",
-  "addition": "minecraft:gold_block",
-  "result": {
-    "id": "bully:auronyx_spear"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/auronyx_spear",
+    "addition":  "minecraft:gold_block",
+    "result":  {
+                   "id":  "bully:auronyx_spear"
+               }
 }

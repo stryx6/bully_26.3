@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_shovel",
+                   "bully:auronyx_shovel",
+                   "bully:feralyth_shovel",
+                   "bully:fluxite_shovel",
+                   "bully:mystralite_shovel",
+                   "bully:nebulazul_shovel",
+                   "bully:voidcrist_shovel"
+               ]
+}

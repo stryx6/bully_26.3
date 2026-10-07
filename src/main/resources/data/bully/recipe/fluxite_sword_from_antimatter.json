@@ -1,10 +1,9 @@
 {
-  "type":  "minecraft:smithing_transform",
-  "addition":  "minecraft:redstone_block",
-  "base":  "#bully:upgradeable_swords",
-  "result":
-  {
-    "id":  "bully:fluxite_sword"
-  },
-  "template":  "bully:tool_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:redstone_block",
+    "base":  "#bully:upgrade_targets/fluxite_sword",
+    "result":  {
+                   "id":  "bully:fluxite_sword"
+               },
+    "template":  "bully:tool_upgrade_smithing_template"
 }

@@ -1,6 +1,6 @@
 {
-  "replace": false,
-  "values": [
-    "bully:antimatter"
-  ]
+    "replace":  false,
+    "values":  [
+                   "bully:rosarium_crystal"
+               ]
 }

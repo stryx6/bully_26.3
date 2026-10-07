@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": "minecraft:resin_bricks",
-  "base": "#bully:upgradeable_leg_armor",
-  "result": {
-    "id": "bully:feralyth_leggings"
-  },
-  "template": "bully:armor_upgrade_smithing_template"
+    "type":  "minecraft:smithing_transform",
+    "addition":  "minecraft:resin_bricks",
+    "base":  "#bully:upgrade_targets/feralyth_leggings",
+    "result":  {
+                   "id":  "bully:feralyth_leggings"
+               },
+    "template":  "bully:armor_upgrade_smithing_template"
 }

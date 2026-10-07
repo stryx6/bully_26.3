@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "minecraft:emerald_block",
-  "base": "#bully:upgradeable_leg_armor",
+  "base": "#bully:upgrade_targets/aetherald_leggings",
   "result": {
     "id": "bully:aetherald_leggings"
   },

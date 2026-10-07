@@ -75,10 +75,17 @@ public final class ModCreativeTabs {
 
 	private static void addAntimatterSection(CreativeModeTab.Output output) {
 		output.accept(ModItems.ANTIMATTER);
-		output.accept(ModItems.LARGE_STICK);
-		output.accept(ModItems.MAGIC_CRYSTAL);
-		output.accept(ModItems.DARK_STAR);
 		output.accept(ModBlocks.ANTIMATTER_BLOCK);
+		output.accept(ModItems.ROSARIUM_CRYSTAL);
+		output.accept(ModBlocks.ROSARIUM_CRYSTAL_BLOCK);
+		output.accept(ModItems.LARGE_STICK);
+		output.accept(ModItems.DARK_STAR);
+		output.accept(ModItems.MAGIC_CRYSTAL);
+		output.accept(ModItems.ECHO_ARMOR_TRIM_SMITHING_TEMPLATE);
+		output.accept(ModItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE);
+		output.accept(ModItems.CROWN_ARMOR_TRIM_SMITHING_TEMPLATE);
+		output.accept(ModItems.FANG_ARMOR_TRIM_SMITHING_TEMPLATE);
+		output.accept(ModItems.THORN_ARMOR_TRIM_SMITHING_TEMPLATE);
 		output.accept(ModItems.ANTIMATTER_UPGRADE_SMITHING_TEMPLATE);
 		output.accept(ModItems.ARMOR_UPGRADE_SMITHING_TEMPLATE);
 		output.accept(ModItems.TOOL_UPGRADE_SMITHING_TEMPLATE);

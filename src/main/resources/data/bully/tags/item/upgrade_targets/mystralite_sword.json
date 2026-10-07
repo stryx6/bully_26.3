@@ -1,0 +1,12 @@
+{
+    "replace":  false,
+    "values":  [
+                   "bully:antimatter_sword",
+                   "bully:aetherald_sword",
+                   "bully:auronyx_sword",
+                   "bully:feralyth_sword",
+                   "bully:fluxite_sword",
+                   "bully:nebulazul_sword",
+                   "bully:voidcrist_sword"
+               ]
+}

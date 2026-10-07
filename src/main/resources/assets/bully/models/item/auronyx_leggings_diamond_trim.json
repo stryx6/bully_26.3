@@ -1,0 +1,6 @@
+{
+    "parent":  "bully:item/auronyx_leggings",
+    "textures":  {
+                     "layer1":  "minecraft:trims/items/leggings_trim_diamond"
+                 }
+}

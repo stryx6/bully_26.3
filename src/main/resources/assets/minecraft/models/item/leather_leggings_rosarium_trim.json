@@ -1,0 +1,6 @@
+{
+    "textures":  {
+                     "layer2":  "minecraft:trims/items/leggings_trim_rosarium"
+                 },
+    "parent":  "minecraft:item/leather_leggings"
+}

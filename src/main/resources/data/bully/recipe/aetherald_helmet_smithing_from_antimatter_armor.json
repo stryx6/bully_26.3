@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "minecraft:emerald_block",
-  "base": "#bully:upgradeable_head_armor",
+  "base": "#bully:upgrade_targets/aetherald_helmet",
   "result": {
     "id": "bully:aetherald_helmet"
   },

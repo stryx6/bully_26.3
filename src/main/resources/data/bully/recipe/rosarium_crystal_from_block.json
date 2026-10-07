@@ -1,0 +1,11 @@
+{
+  "type":  "minecraft:crafting_shapeless",
+  "category":  "misc",
+  "ingredients": [
+    "bully:rosarium_crystal_block"
+  ],
+  "result":  {
+    "id":  "bully:rosarium_crystal",
+    "count":  4
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": "bully:tool_upgrade_smithing_template",
-  "base": "#bully:upgradeable_spears",
-  "addition": "minecraft:diamond_block",
-  "result": {
-    "id": "bully:mystralite_spear"
-  }
+    "type":  "minecraft:smithing_transform",
+    "template":  "bully:tool_upgrade_smithing_template",
+    "base":  "#bully:upgrade_targets/mystralite_spear",
+    "addition":  "minecraft:diamond_block",
+    "result":  {
+                   "id":  "bully:mystralite_spear"
+               }
 }
