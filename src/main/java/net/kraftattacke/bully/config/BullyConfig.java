@@ -17,6 +17,8 @@ public final class BullyConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static BullyConfig instance;
 
+	/** Utility menu is off by default. On a server, only the server's config/bully.json controls this. */
+	public boolean utilityMenuEnabled = false;
 	public SwordCoating swordCoating = new SwordCoating();
 	public MagicWand magicWand = new MagicWand();
 

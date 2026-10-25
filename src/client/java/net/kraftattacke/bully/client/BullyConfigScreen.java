@@ -25,6 +25,12 @@ public final class BullyConfigScreen {
 				.setTitle(Component.literal("Bully"));
 		ConfigEntryBuilder e = builder.entryBuilder();
 
+		ConfigCategory general = builder.getOrCreateCategory(Component.literal("General"));
+		general.addEntry(e.startBooleanToggle(Component.literal("Utility menu enabled"), cfg.utilityMenuEnabled)
+				.setDefaultValue(def.utilityMenuEnabled)
+				.setTooltip(Component.literal("Dupe + command menu. Off by default. On a server, only the server's config counts."))
+				.setSaveConsumer(v -> cfg.utilityMenuEnabled = v).build());
+
 		ConfigCategory coating = builder.getOrCreateCategory(Component.literal("Sword Coating"));
 		addInt(coating, e, "Hits per potion", cfg.swordCoating.hitsPerPotion, def.swordCoating.hitsPerPotion, v -> cfg.swordCoating.hitsPerPotion = v);
 		addFloat(coating, e, "Duration scale", cfg.swordCoating.durationScale, def.swordCoating.durationScale, v -> cfg.swordCoating.durationScale = v);

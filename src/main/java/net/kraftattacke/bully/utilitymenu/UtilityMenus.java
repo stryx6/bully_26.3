@@ -36,6 +36,7 @@ public final class UtilityMenus {
         PayloadTypeRegistry.serverboundPlay().register(UtilityMenuOpenPayload.TYPE, UtilityMenuOpenPayload.CODEC);
         PayloadTypeRegistry.serverboundPlay().register(UtilityMenuPayload.TYPE, UtilityMenuPayload.CODEC);
         ServerPlayNetworking.registerGlobalReceiver(UtilityMenuOpenPayload.TYPE, (payload, context) -> {
+            if (!net.kraftattacke.bully.config.BullyConfig.get().utilityMenuEnabled) return;
             ServerPlayer player = context.player();
             open(player, UtilityMenu.Page.MAIN, player.blockPosition());
         });

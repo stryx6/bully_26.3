@@ -42,7 +42,7 @@ Eight collectible music discs, and a new villager profession — the **Discograp
 Eight new music discs to collect, plus a new villager profession, the **Discographer**, who trades all of them. If you'd rather not go hunting, you can complete the set through trading.
 
 ### Utility menu
-An in-game menu with two pages: an item **Dupe** page and a **Command** page with a text field (it has vanilla-style command suggestions and Tab completion). The keybind for it is **unbound by default** — set it yourself under Options → Controls if you want it.
+An in-game menu with two pages: an item **Dupe** page and a **Command** page with a text field (it has vanilla-style command suggestions and Tab completion). It is **off by default** and has to be switched on in the config (`utilityMenuEnabled`), so it never opens unless you turn it on. On a server, only the **server's** config decides this — a client turning it on in singleplayer can't open it on a server that has it off. Its keybind is also **unbound by default**; set it under Options → Controls once it's enabled.
 
 ## Config
 
