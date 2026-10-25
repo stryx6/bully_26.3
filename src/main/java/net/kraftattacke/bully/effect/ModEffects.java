@@ -35,7 +35,7 @@ public final class ModEffects {
 
 	public static final Holder<Potion> GRIEVOUS_WOUNDS_POTION = registerPotion("grievous_wounds", 1200, 0);
 	public static final Holder<Potion> LONG_GRIEVOUS_WOUNDS_POTION = registerPotion("long_grievous_wounds", 3000, 0);
-	public static final Holder<Potion> STRONG_GRIEVOUS_WOUNDS_POTION = registerPotion("strong_grievous_wounds", 900, 1);
+	public static final Holder<Potion> STRONG_GRIEVOUS_WOUNDS_POTION = registerPotion("strong_grievous_wounds", 600, 1);
 
 	private ModEffects() {
 	}
