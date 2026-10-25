@@ -3,31 +3,6 @@
   "description": {
     "translate": "enchantment.bully.mace_guard"
   },
-  "effects": {
-    "minecraft:damage_protection": [
-      {
-        "effect": {
-          "type": "minecraft:add",
-          "value": {
-            "type": "minecraft:linear",
-            "base": 0.08,
-            "per_level_above_first": 0.04
-          }
-        },
-        "requirements": {
-          "type": "minecraft:damage_source_properties",
-          "predicate": {
-            "tags": [
-              {
-                "id": "#minecraft:mace_smash",
-                "expected": true
-              }
-            ]
-          }
-        }
-      }
-    ]
-  },
   "max_level": 4,
   "min_cost": {
     "base": 22,

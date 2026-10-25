@@ -1,4 +1,4 @@
-package net.kraftattacke.bully.hackermenu;
+package net.kraftattacke.bully.utilitymenu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
@@ -11,21 +11,21 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 
-public final class HackerMenu extends AbstractContainerMenu {
-    public enum Page { MAIN, COMMAND, POTION }
+public final class UtilityMenu extends AbstractContainerMenu {
+    public enum Page { MAIN, COMMAND }
 
     public final Page page;
     public final BlockPos origin;
     private final Container dupeItems;
     private final BaseContainerBlockEntity boundBlock;
 
-    public HackerMenu(int id, Inventory inventory, BlockPos origin, Page page) {
-        super(HackerMenus.type(page), id);
+    public UtilityMenu(int id, Inventory inventory, BlockPos origin, Page page) {
+        super(UtilityMenus.type(page), id);
         this.page = page;
         this.origin = origin.immutable();
         // The original can bind its nine slots to a container at the opening position.
         var block = inventory.player.level().getBlockEntity(origin);
-        boundBlock = page != Page.POTION && block instanceof BaseContainerBlockEntity container
+        boundBlock = block instanceof BaseContainerBlockEntity container
                 && container.getContainerSize() >= 9 ? container : null;
         dupeItems = page == Page.MAIN && boundBlock != null ? boundBlock : new SimpleContainer(9);
         if (page == Page.MAIN) {
@@ -33,7 +33,7 @@ public final class HackerMenu extends AbstractContainerMenu {
                 addSlot(new Slot(dupeItems, i, 123 + (i % 3) * 18, 8 + (i / 3) * 18));
             }
         }
-        if (page != Page.POTION) {
+        {
             int x = page == Page.MAIN ? 70 : 8;
             int y = page == Page.MAIN ? 87 : 84;
             for (int row = 0; row < 3; row++) {

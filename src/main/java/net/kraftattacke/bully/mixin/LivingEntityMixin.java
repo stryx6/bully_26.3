@@ -1,7 +1,11 @@
 package net.kraftattacke.bully.mixin;
 
 import net.kraftattacke.bully.Bully;
+import net.kraftattacke.bully.effect.ModEffects;
 import net.kraftattacke.bully.enchantment.ModEnchantments;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.damagesource.DamageSource;
@@ -78,40 +82,17 @@ public abstract class LivingEntityMixin {
 		target.setDeltaMovement(target.getDeltaMovement().add(pullVector));
 	}
 
-	// hurt(DamageSource, float amount) - float argument is at local slot 2 (this=0, source=1, amount=2)
-	@ModifyVariable(method = "actuallyHurt", at = @At("HEAD"), argsOnly = true, ordinal = 0)
-	private float bully$modifyIncomingDamage(float amount, net.minecraft.server.level.ServerLevel level, DamageSource source) {
-		LivingEntity self = (LivingEntity)(Object)this;
-		float out = amount;
-
-		// Only reduce damage dealt by a mace (vanilla: Items.MACE).
-		ItemStack weapon = source.getWeaponItem();
-		if (weapon == null || weapon.isEmpty() || !weapon.is(Items.MACE)) {
-			return out;
-		}
-
-		int enchantLevel = getMaxMaceGuardLevel(level, self);
-		if (enchantLevel <= 0) {
-			return out;
-		}
-
-		// 4 steps (levels): 10% reduction per level (max 40%).
-		float multiplier = 1.0F - (0.10F * enchantLevel);
-		if (multiplier < 0.0F) {
-			multiplier = 0.0F;
-		}
-		return out * multiplier;
+	@ModifyVariable(method = "heal", at = @At("HEAD"), argsOnly = true)
+	private float bully$grievousWoundsHeal(float amount) {
+		return amount * ModEffects.healMultiplier((LivingEntity)(Object)this);
 	}
 
-	private static int getMaxMaceGuardLevel(net.minecraft.server.level.ServerLevel level, LivingEntity entity) {
-		Holder.Reference<Enchantment> maceGuard = ModEnchantments.getMaceGuard(level.registryAccess());
-
-		int max = 0;
-		max = Math.max(max, EnchantmentHelper.getItemEnchantmentLevel(maceGuard, entity.getItemBySlot(EquipmentSlot.HEAD)));
-		max = Math.max(max, EnchantmentHelper.getItemEnchantmentLevel(maceGuard, entity.getItemBySlot(EquipmentSlot.CHEST)));
-		max = Math.max(max, EnchantmentHelper.getItemEnchantmentLevel(maceGuard, entity.getItemBySlot(EquipmentSlot.LEGS)));
-		max = Math.max(max, EnchantmentHelper.getItemEnchantmentLevel(maceGuard, entity.getItemBySlot(EquipmentSlot.FEET)));
-		return max;
+	// Covers golden apples and every other Regeneration source.
+	@Inject(method = "canBeAffected", at = @At("HEAD"), cancellable = true)
+	private void bully$blockRegeneration(MobEffectInstance instance, CallbackInfoReturnable<Boolean> cir) {
+		if (instance.is(MobEffects.REGENERATION) && ((LivingEntity)(Object)this).hasEffect(ModEffects.GRIEVOUS_WOUNDS)) {
+			cir.setReturnValue(false);
+		}
 	}
 
 	// Antimatter scythe uses vanilla damage typing on 1.21.1; Sharpness will apply normally.

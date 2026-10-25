@@ -1,0 +1,6 @@
+{
+  "textures":  {
+    "layer0":  "bully:item/empty_trim_template"
+  },
+  "parent":  "minecraft:item/generated"
+}

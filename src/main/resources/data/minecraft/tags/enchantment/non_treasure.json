@@ -2,6 +2,7 @@
     "replace":  false,
     "values":  [
                    "bully:mace_guard",
-                   "bully:pull"
+                   "bully:pull",
+                   "bully:hunger_leech"
                ]
 }

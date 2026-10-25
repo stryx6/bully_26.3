@@ -1,6 +1,8 @@
 package net.kraftattacke.bully;
 
 import net.kraftattacke.bully.block.ModBlocks;
+import net.kraftattacke.bully.effect.ModEffects;
+import net.kraftattacke.bully.item.SwordCoating;
 import net.kraftattacke.bully.item.ModItems;
 import net.kraftattacke.bully.item.ModTools;
 import net.kraftattacke.bully.network.ModNetworking;
@@ -17,7 +19,9 @@ public class Bully implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		net.kraftattacke.bully.hackermenu.HackerMenus.register();
+		net.kraftattacke.bully.config.BullyConfig.load();
+		net.kraftattacke.bully.item.MagicWandItem.applyConfig();
+		net.kraftattacke.bully.utilitymenu.UtilityMenus.register();
 		ModNetworking.register();
 		ModSounds.register();
 		ModParticles.register();
@@ -25,9 +29,12 @@ public class Bully implements ModInitializer {
 		ModItems.registerItemGroups();
 		ModItems.register();
 		ModTools.register();
+		ModEffects.register();
+		SwordCoating.register();
 		ModVillagers.register();
 		AttackEvents.register();
 		MagicWandLightEvents.register();
+		net.kraftattacke.bully.command.ModCommands.register();
 
 		LOGGER.info("Bully initialized");
 	}

@@ -779,6 +779,14 @@ public final class ModItems {
 					.jukeboxPlayable(SHADOWROOT_JUKEBOX_SONG)
 	);
 
+	public static final  Item EMPTY_TRIM_TEMPLATE = register(
+			"empty_trim_template",
+			Item::new,
+			new Item.Properties()
+					.rarity(Rarity.UNCOMMON)
+
+	);
+
 	private ModItems() {
 	}
 

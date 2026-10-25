@@ -43,7 +43,10 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	
+
+	// ModMenu + Cloth Config are compile-only; both already ship in run/mods for runtime.
+	clientCompileOnly files("run/mods/modmenu-21.0.0.jar")
+	clientCompileOnly files("run/mods/cloth-config-26.3.158.jar")
 }
 
 sourceSets {
@@ -68,6 +71,28 @@ fabricApi {
 		enableGameTests = false
 		enableClientGameTests = true
 		eula = true
+	}
+}
+
+// Opt-in world export, using the existing isolated client test runtime.
+// .\gradlew.bat runClientGameTest -ParmorTrimArena --console=plain
+def exportArmorTrimArena = providers.gradleProperty("armorTrimArena").isPresent()
+tasks.named("processGametestResources", ProcessResources).configure {
+	inputs.property("armorTrimArena", exportArmorTrimArena)
+	if (exportArmorTrimArena) {
+		filesMatching("fabric.mod.json") {
+			filter { String line ->
+				line.contains('"fabric-client-gametest":')
+					? '    "fabric-client-gametest": ["net.kraftattacke.bully.trim.ArmorTrimArenaGameTest"]'
+					: line
+			}
+		}
+	}
+}
+tasks.named("runClientGameTest", JavaExec).configure {
+	if (exportArmorTrimArena) {
+		maxHeapSize = "4G"
+		systemProperty "bully.arena.projectDir", project.projectDir.absolutePath
 	}
 }
 

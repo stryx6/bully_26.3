@@ -8,7 +8,7 @@
   ],
   "key":  {
     "E":  "minecraft:redstone_block",
-    "D":  "bully:dark_star",
+    "D":  "bully:empty_trim_template",
     "S":  "minecraft:gold_block"
   },
   "result":  {
