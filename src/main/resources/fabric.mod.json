@@ -21,6 +21,9 @@
 		"client": [
 			"net.kraftattacke.bully.BullyClient"
 		],
+		"modmenu": [
+			"net.kraftattacke.bully.client.BullyModMenu"
+		],
 		"fabric-datagen": [
 			"net.kraftattacke.bully.BullyDataGenerator"
 		]

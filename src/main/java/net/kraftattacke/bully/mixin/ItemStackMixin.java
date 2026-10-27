@@ -2,6 +2,9 @@ package net.kraftattacke.bully.mixin;
 
 import com.sun.jna.platform.unix.X11;
 import net.kraftattacke.bully.enchantment.ModEnchantments;
+import net.kraftattacke.bully.item.SwordCoating;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.ChatFormatting;
@@ -23,6 +26,14 @@ import java.util.Locale;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
+	// Runs after every successful melee hit, for player and mob targets alike.
+	@Inject(method = "hurtEnemy", at = @At("HEAD"))
+	private void bully$applySwordCoating(LivingEntity target, LivingEntity attacker, CallbackInfoReturnable<Boolean> cir) {
+		if (target.level() instanceof ServerLevel level) {
+			SwordCoating.onHit(level, (ItemStack)(Object)this, target, attacker);
+		}
+	}
+
 	@Inject(method = "getTooltipLines", at = @At("RETURN"), cancellable = true)
 	private void bully$addSharpnessBonusLine(Item.TooltipContext context, Player player, TooltipFlag flag, CallbackInfoReturnable<List<Component>> cir) {
 		ItemStack self = (ItemStack)(Object)this;

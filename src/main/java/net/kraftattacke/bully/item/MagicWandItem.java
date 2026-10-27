@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import net.kraftattacke.bully.Bully;
 import net.kraftattacke.bully.ModParticles;
+import net.kraftattacke.bully.effect.ModEffects;
 import net.kraftattacke.bully.network.MagicWandBeamPayload;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -51,64 +52,121 @@ public class MagicWandItem extends Item {
 	private static final String MODE_TAG = "BullyMagicWandMode";
 	private static final int TICKS_PER_SECOND = 20;
 	private static final int USE_DURATION_TICKS = 72000;
-	private static final int MIN_CHARGE_TICKS = 10;
-	private static final int FULL_CHARGE_TICKS = 200;
-	private static final int CHARGE_STEP_TICKS = 20;
 	private static final int CHARGE_SOUND_INTERVAL_TICKS = 16;
 	private static final ResourceKey<DamageType> EMBER_LANCE_DAMAGE = damageType("magic_wand_ember_lance");
 	private static final ResourceKey<DamageType> FROST_BURST_DAMAGE = damageType("magic_wand_frost_burst");
 	private static final ResourceKey<DamageType> LIFE_BLOOM_DAMAGE = damageType("magic_wand_life_bloom");
 
-	// Spell tuning: change damage, range, radius, healing, effects and cooldowns here.
-	private static final double EMBER_LANCE_BASE_RANGE = 40.0;
-	private static final double EMBER_LANCE_CHARGED_RANGE_BONUS = 20.0;
-	private static final float EMBER_LANCE_BASE_DAMAGE = 10.0F;
-	private static final float EMBER_LANCE_CHARGED_DAMAGE_BONUS = 50.0F;
-	private static final float EMBER_LANCE_BASE_FIRE_SECONDS = 5.0F;
-	private static final float EMBER_LANCE_CHARGED_FIRE_SECONDS_BONUS = 5.0F;
-	private static final int EMBER_LANCE_COOLDOWN_TICKS = 10;
-	private static final int EMBER_LANCE_SHIELD_BURN_BASE_DAMAGE = 10;
-	private static final int EMBER_LANCE_SHIELD_BURN_CHARGED_DAMAGE_BONUS = 14;
-	private static final int EMBER_LANCE_SHIELD_STUN_BASE_TICKS = 50;
-	private static final int EMBER_LANCE_SHIELD_STUN_CHARGED_TICKS_BONUS = 50;
+	// Spell tuning loaded from config/bully.json in applyConfig(); defaults match the original values.
+	private static int MIN_CHARGE_TICKS = 10;
+	private static int FULL_CHARGE_TICKS = 200;
+	private static int CHARGE_STEP_TICKS = 20;
+	private static double EMBER_LANCE_BASE_RANGE = 40.0;
+	private static double EMBER_LANCE_CHARGED_RANGE_BONUS = 20.0;
+	private static float EMBER_LANCE_BASE_DAMAGE = 10.0F;
+	private static float EMBER_LANCE_CHARGED_DAMAGE_BONUS = 50.0F;
+	private static float EMBER_LANCE_BASE_FIRE_SECONDS = 5.0F;
+	private static float EMBER_LANCE_CHARGED_FIRE_SECONDS_BONUS = 5.0F;
+	private static int EMBER_LANCE_COOLDOWN_TICKS = 10;
+	private static int EMBER_LANCE_SHIELD_BURN_BASE_DAMAGE = 10;
+	private static int EMBER_LANCE_SHIELD_BURN_CHARGED_DAMAGE_BONUS = 14;
+	private static int EMBER_LANCE_SHIELD_STUN_BASE_TICKS = 50;
+	private static int EMBER_LANCE_SHIELD_STUN_CHARGED_TICKS_BONUS = 50;
 
-	private static final double FROST_BURST_BASE_RANGE = 30.0;
-	private static final double FROST_BURST_CHARGED_RANGE_BONUS = 15.0;
-	private static final double FROST_BURST_BASE_RADIUS = 3.0;
-	private static final double FROST_BURST_CHARGED_RADIUS_BONUS = 3.0;
-	private static final float FROST_BURST_BASE_DAMAGE = 6.0F;
-	private static final float FROST_BURST_CHARGED_DAMAGE_BONUS = 6.0F;
-	private static final int FROST_BURST_COOLDOWN_TICKS = 30;
+	private static double FROST_BURST_BASE_RANGE = 30.0;
+	private static double FROST_BURST_CHARGED_RANGE_BONUS = 15.0;
+	private static double FROST_BURST_BASE_RADIUS = 3.0;
+	private static double FROST_BURST_CHARGED_RADIUS_BONUS = 3.0;
+	private static float FROST_BURST_BASE_DAMAGE = 6.0F;
+	private static float FROST_BURST_CHARGED_DAMAGE_BONUS = 6.0F;
+	private static int FROST_BURST_COOLDOWN_TICKS = 30;
 
-	private static final double LIFE_BLOOM_BASE_RANGE = 20.0;
-	private static final double LIFE_BLOOM_CHARGED_RANGE_BONUS = 10.0;
-	private static final double LIFE_BLOOM_BASE_RADIUS = 4.0;
-	private static final double LIFE_BLOOM_CHARGED_RADIUS_BONUS = 4.0;
-	private static final float LIFE_BLOOM_SELF_HEAL = 3.0F;
-	private static final float LIFE_BLOOM_CHARGED_SELF_HEAL_BONUS = 5.0F;
-	private static final float LIFE_BLOOM_ALLY_HEAL = 3.0F;
-	private static final float LIFE_BLOOM_CHARGED_ALLY_HEAL_BONUS = 3.0F;
-	private static final float LIFE_BLOOM_HOSTILE_DAMAGE = 3.0F;
-	private static final float LIFE_BLOOM_CHARGED_HOSTILE_DAMAGE_BONUS = 3.0F;
-	private static final int LIFE_BLOOM_COOLDOWN_TICKS = 50;
+	private static double LIFE_BLOOM_BASE_RANGE = 20.0;
+	private static double LIFE_BLOOM_CHARGED_RANGE_BONUS = 10.0;
+	private static double LIFE_BLOOM_BASE_RADIUS = 4.0;
+	private static double LIFE_BLOOM_CHARGED_RADIUS_BONUS = 4.0;
+	private static float LIFE_BLOOM_SELF_HEAL = 3.0F;
+	private static float LIFE_BLOOM_CHARGED_SELF_HEAL_BONUS = 5.0F;
+	private static float LIFE_BLOOM_ALLY_HEAL = 3.0F;
+	private static float LIFE_BLOOM_CHARGED_ALLY_HEAL_BONUS = 3.0F;
+	private static float LIFE_BLOOM_HOSTILE_DAMAGE = 3.0F;
+	private static float LIFE_BLOOM_CHARGED_HOSTILE_DAMAGE_BONUS = 3.0F;
+	private static int LIFE_BLOOM_COOLDOWN_TICKS = 50;
 
 	// Effect duration tuning in seconds. Bonuses scale with charge; negative effects use 20-tick steps.
-	private static final float FROST_BURST_SLOWNESS_SECONDS = 5.0F;
-	private static final float FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS = 25.0F;
-	private static final float LIFE_BLOOM_SATURATION_SECONDS = 5F;
-	private static final float LIFE_BLOOM_CHARGED_SATURATION_SECONDS_BONUS = 5F;
-	private static final float LIFE_BLOOM_REGEN_SECONDS = 5F;
-	private static final float LIFE_BLOOM_CHARGED_REGEN_SECONDS_BONUS = 5F;
-	private static final float LIFE_BLOOM_ABSORPTION_SECONDS = 6.0F;
-	private static final float LIFE_BLOOM_CHARGED_ABSORPTION_SECONDS_BONUS = 4.0F;
-	private static final float LIFE_BLOOM_POISON_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS = 25.0F;
-	private static final float LIFE_BLOOM_WITHER_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS = 25.0F;
-	private static final float LIFE_BLOOM_DARKNESS_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS = 25.0F;
-	private static final float LIFE_BLOOM_WEAKNESS_SECONDS = 5.0F;
-	private static final float LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS = 25.0F;
+	private static float FROST_BURST_SLOWNESS_SECONDS = 5.0F;
+	private static float FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS = 25.0F;
+	private static float LIFE_BLOOM_SATURATION_SECONDS = 5F;
+	private static float LIFE_BLOOM_CHARGED_SATURATION_SECONDS_BONUS = 5F;
+	private static float LIFE_BLOOM_REGEN_SECONDS = 5F;
+	private static float LIFE_BLOOM_CHARGED_REGEN_SECONDS_BONUS = 5F;
+	private static float LIFE_BLOOM_ABSORPTION_SECONDS = 6.0F;
+	private static float LIFE_BLOOM_CHARGED_ABSORPTION_SECONDS_BONUS = 4.0F;
+	private static float LIFE_BLOOM_POISON_SECONDS = 5.0F;
+	private static float LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS = 25.0F;
+	private static float LIFE_BLOOM_WITHER_SECONDS = 5.0F;
+	private static float LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS = 25.0F;
+	private static float LIFE_BLOOM_DARKNESS_SECONDS = 5.0F;
+	private static float LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS = 25.0F;
+	private static float LIFE_BLOOM_GRIEVOUS_WOUNDS_SECONDS = 5.0F;
+	private static float LIFE_BLOOM_CHARGED_GRIEVOUS_WOUNDS_SECONDS_BONUS = 10.0F;
+	private static float LIFE_BLOOM_WEAKNESS_SECONDS = 5.0F;
+	private static float LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS = 25.0F;
+
+	/** Copies config/bully.json into the fields above. Call before the wand item is registered. */
+	public static void applyConfig() {
+		var c = net.kraftattacke.bully.config.BullyConfig.get().magicWand;
+		MIN_CHARGE_TICKS = c.minChargeTicks;
+		FULL_CHARGE_TICKS = c.fullChargeTicks;
+		CHARGE_STEP_TICKS = c.chargeStepTicks;
+		EMBER_LANCE_BASE_RANGE = c.emberLance.baseRange;
+		EMBER_LANCE_CHARGED_RANGE_BONUS = c.emberLance.chargedRangeBonus;
+		EMBER_LANCE_BASE_DAMAGE = c.emberLance.baseDamage;
+		EMBER_LANCE_CHARGED_DAMAGE_BONUS = c.emberLance.chargedDamageBonus;
+		EMBER_LANCE_BASE_FIRE_SECONDS = c.emberLance.baseFireSeconds;
+		EMBER_LANCE_CHARGED_FIRE_SECONDS_BONUS = c.emberLance.chargedFireSecondsBonus;
+		EMBER_LANCE_COOLDOWN_TICKS = c.emberLance.cooldownTicks;
+		EMBER_LANCE_SHIELD_BURN_BASE_DAMAGE = c.emberLance.shieldBurnBaseDamage;
+		EMBER_LANCE_SHIELD_BURN_CHARGED_DAMAGE_BONUS = c.emberLance.shieldBurnChargedDamageBonus;
+		EMBER_LANCE_SHIELD_STUN_BASE_TICKS = c.emberLance.shieldStunBaseTicks;
+		EMBER_LANCE_SHIELD_STUN_CHARGED_TICKS_BONUS = c.emberLance.shieldStunChargedTicksBonus;
+		FROST_BURST_BASE_RANGE = c.frostBurst.baseRange;
+		FROST_BURST_CHARGED_RANGE_BONUS = c.frostBurst.chargedRangeBonus;
+		FROST_BURST_BASE_RADIUS = c.frostBurst.baseRadius;
+		FROST_BURST_CHARGED_RADIUS_BONUS = c.frostBurst.chargedRadiusBonus;
+		FROST_BURST_BASE_DAMAGE = c.frostBurst.baseDamage;
+		FROST_BURST_CHARGED_DAMAGE_BONUS = c.frostBurst.chargedDamageBonus;
+		FROST_BURST_COOLDOWN_TICKS = c.frostBurst.cooldownTicks;
+		FROST_BURST_SLOWNESS_SECONDS = c.frostBurst.slownessSeconds;
+		FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS = c.frostBurst.chargedSlownessSecondsBonus;
+		LIFE_BLOOM_BASE_RANGE = c.lifeBloom.baseRange;
+		LIFE_BLOOM_CHARGED_RANGE_BONUS = c.lifeBloom.chargedRangeBonus;
+		LIFE_BLOOM_BASE_RADIUS = c.lifeBloom.baseRadius;
+		LIFE_BLOOM_CHARGED_RADIUS_BONUS = c.lifeBloom.chargedRadiusBonus;
+		LIFE_BLOOM_SELF_HEAL = c.lifeBloom.selfHeal;
+		LIFE_BLOOM_CHARGED_SELF_HEAL_BONUS = c.lifeBloom.chargedSelfHealBonus;
+		LIFE_BLOOM_ALLY_HEAL = c.lifeBloom.allyHeal;
+		LIFE_BLOOM_CHARGED_ALLY_HEAL_BONUS = c.lifeBloom.chargedAllyHealBonus;
+		LIFE_BLOOM_HOSTILE_DAMAGE = c.lifeBloom.hostileDamage;
+		LIFE_BLOOM_CHARGED_HOSTILE_DAMAGE_BONUS = c.lifeBloom.chargedHostileDamageBonus;
+		LIFE_BLOOM_COOLDOWN_TICKS = c.lifeBloom.cooldownTicks;
+		LIFE_BLOOM_SATURATION_SECONDS = c.lifeBloom.saturationSeconds;
+		LIFE_BLOOM_CHARGED_SATURATION_SECONDS_BONUS = c.lifeBloom.chargedSaturationSecondsBonus;
+		LIFE_BLOOM_REGEN_SECONDS = c.lifeBloom.regenSeconds;
+		LIFE_BLOOM_CHARGED_REGEN_SECONDS_BONUS = c.lifeBloom.chargedRegenSecondsBonus;
+		LIFE_BLOOM_ABSORPTION_SECONDS = c.lifeBloom.absorptionSeconds;
+		LIFE_BLOOM_CHARGED_ABSORPTION_SECONDS_BONUS = c.lifeBloom.chargedAbsorptionSecondsBonus;
+		LIFE_BLOOM_POISON_SECONDS = c.lifeBloom.poisonSeconds;
+		LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS = c.lifeBloom.chargedPoisonSecondsBonus;
+		LIFE_BLOOM_WITHER_SECONDS = c.lifeBloom.witherSeconds;
+		LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS = c.lifeBloom.chargedWitherSecondsBonus;
+		LIFE_BLOOM_DARKNESS_SECONDS = c.lifeBloom.darknessSeconds;
+		LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS = c.lifeBloom.chargedDarknessSecondsBonus;
+		LIFE_BLOOM_GRIEVOUS_WOUNDS_SECONDS = c.lifeBloom.grievousWoundsSeconds;
+		LIFE_BLOOM_CHARGED_GRIEVOUS_WOUNDS_SECONDS_BONUS = c.lifeBloom.chargedGrievousWoundsSecondsBonus;
+		LIFE_BLOOM_WEAKNESS_SECONDS = c.lifeBloom.weaknessSeconds;
+		LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS = c.lifeBloom.chargedWeaknessSecondsBonus;
+	}
 
 	public MagicWandItem(Properties properties) {
 		super(properties);
@@ -170,7 +228,7 @@ public class MagicWandItem extends Item {
 
 		if (cast) {
 			stack.hurtAndBreak(1, player, livingEntity.getUsedItemHand());
-			player.getCooldowns().addCooldown(stack, mode.cooldownTicks);
+			player.getCooldowns().addCooldown(stack, cooldownTicks(mode));
 		}
 
 		return cast;
@@ -291,6 +349,7 @@ public class MagicWandItem extends Item {
 
 			livingTarget.hurtServer(level, source, LIFE_BLOOM_HOSTILE_DAMAGE + charge * LIFE_BLOOM_CHARGED_HOSTILE_DAMAGE_BONUS);
 			livingTarget.addEffect(new MobEffectInstance(MobEffects.DARKNESS, effectDurationTicks(LIFE_BLOOM_DARKNESS_SECONDS, LIFE_BLOOM_CHARGED_DARKNESS_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
+			livingTarget.addEffect(new MobEffectInstance(ModEffects.GRIEVOUS_WOUNDS, effectDurationTicks(LIFE_BLOOM_GRIEVOUS_WOUNDS_SECONDS, LIFE_BLOOM_CHARGED_GRIEVOUS_WOUNDS_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
 			livingTarget.addEffect(new MobEffectInstance(MobEffects.WITHER, effectDurationTicks(LIFE_BLOOM_WITHER_SECONDS, LIFE_BLOOM_CHARGED_WITHER_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
 			livingTarget.addEffect(new MobEffectInstance(MobEffects.POISON, effectDurationTicks(LIFE_BLOOM_POISON_SECONDS, LIFE_BLOOM_CHARGED_POISON_SECONDS_BONUS, steppedCharge), charge > 0.75F ? 1 : 0, false, true, true));
 			livingTarget.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, effectDurationTicks(LIFE_BLOOM_WEAKNESS_SECONDS, LIFE_BLOOM_CHARGED_WEAKNESS_SECONDS_BONUS, steppedCharge), 0, false, true, true));
@@ -417,6 +476,14 @@ public class MagicWandItem extends Item {
 
 	private static boolean isLifeBloomFriendly(Player player, LivingEntity entity) {
 		return !(entity instanceof Player) && entity.isAlliedTo(player);
+	}
+
+	private static int cooldownTicks(SpellMode mode) {
+		return switch (mode) {
+			case RED -> EMBER_LANCE_COOLDOWN_TICKS;
+			case BLUE -> FROST_BURST_COOLDOWN_TICKS;
+			case GREEN -> LIFE_BLOOM_COOLDOWN_TICKS;
+		};
 	}
 
 	private static int effectDurationTicks(float baseSeconds, float chargedBonusSeconds, float charge) {
@@ -558,9 +625,9 @@ public class MagicWandItem extends Item {
 	}
 
 	private enum SpellMode {
-		RED("red", 0.0F, 0xFF2A1D, 0xFFD36A, ParticleTypes.FLAME, ParticleTypes.END_ROD, ChatFormatting.RED, "tooltip.bully.magic_wand.mode.red", EMBER_LANCE_COOLDOWN_TICKS, 0.8F, EMBER_LANCE_DAMAGE),
-		BLUE("blue", 1.0F, 0x49A7FF, 0xD7F7FF, ParticleTypes.SNOWFLAKE, ParticleTypes.ELECTRIC_SPARK, ChatFormatting.AQUA, "tooltip.bully.magic_wand.mode.blue", FROST_BURST_COOLDOWN_TICKS, 1.15F, FROST_BURST_DAMAGE),
-		GREEN("green", 2.0F, 0x45E06F, 0xD8FF7A, ParticleTypes.HAPPY_VILLAGER, ParticleTypes.GLOW, ChatFormatting.GREEN, "tooltip.bully.magic_wand.mode.green", LIFE_BLOOM_COOLDOWN_TICKS, 1.35F, LIFE_BLOOM_DAMAGE);
+		RED("red", 0.0F, 0xFF2A1D, 0xFFD36A, ParticleTypes.FLAME, ParticleTypes.END_ROD, ChatFormatting.RED, "tooltip.bully.magic_wand.mode.red", 0.8F, EMBER_LANCE_DAMAGE),
+		BLUE("blue", 1.0F, 0x49A7FF, 0xD7F7FF, ParticleTypes.SNOWFLAKE, ParticleTypes.ELECTRIC_SPARK, ChatFormatting.AQUA, "tooltip.bully.magic_wand.mode.blue", 1.15F, FROST_BURST_DAMAGE),
+		GREEN("green", 2.0F, 0x45E06F, 0xD8FF7A, ParticleTypes.HAPPY_VILLAGER, ParticleTypes.GLOW, ChatFormatting.GREEN, "tooltip.bully.magic_wand.mode.green", 1.35F, LIFE_BLOOM_DAMAGE);
 
 		private final String id;
 		private final float customModelData;
@@ -570,11 +637,10 @@ public class MagicWandItem extends Item {
 		private final ParticleOptions accentParticle;
 		private final ChatFormatting formatting;
 		private final String translationKey;
-		private final int cooldownTicks;
 		private final float pitch;
 		private final ResourceKey<DamageType> damageType;
 
-		SpellMode(String id, float customModelData, int particleColor, int secondaryParticleColor, ParticleOptions burstParticle, ParticleOptions accentParticle, ChatFormatting formatting, String translationKey, int cooldownTicks, float pitch, ResourceKey<DamageType> damageType) {
+		SpellMode(String id, float customModelData, int particleColor, int secondaryParticleColor, ParticleOptions burstParticle, ParticleOptions accentParticle, ChatFormatting formatting, String translationKey, float pitch, ResourceKey<DamageType> damageType) {
 			this.id = id;
 			this.customModelData = customModelData;
 			this.particleColor = particleColor;
@@ -583,7 +649,6 @@ public class MagicWandItem extends Item {
 			this.accentParticle = accentParticle;
 			this.formatting = formatting;
 			this.translationKey = translationKey;
-			this.cooldownTicks = cooldownTicks;
 			this.pitch = pitch;
 			this.damageType = damageType;
 		}

@@ -164,6 +164,13 @@
     "tag.item.minecraft.enchantable.spear":  "Spear Enchantable",
     "tag.enchantment.minecraft.exclusive_set.pull":  "Pull Exclusive Set",
     "enchantment.bully.pull":  "Pull",
+    "enchantment.bully.hunger_leech":  "Hunger Leech",
+    "effect.bully.grievous_wounds":  "Grievous Wounds",
+    "item.minecraft.potion.effect.grievous_wounds":  "Potion of Grievous Wounds",
+    "item.minecraft.splash_potion.effect.grievous_wounds":  "Splash Potion of Grievous Wounds",
+    "item.minecraft.lingering_potion.effect.grievous_wounds":  "Lingering Potion of Grievous Wounds",
+    "item.minecraft.tipped_arrow.effect.grievous_wounds":  "Arrow of Grievous Wounds",
+    "item.bully.sword_coating":  "Coated: %s hits left",
     "item.bully.tool_upgrade_smithing_template":  "Tool Upgrade Template",
     "item.bully.tool_upgrade_smithing_template.applies_to":  "Antimatter Tools \u0026 Weapons",
     "item.bully.tool_upgrade_smithing_template.ingredients":  "Ore \u0026 Gem Blocks",
@@ -182,5 +189,6 @@
     "trim_pattern.bully.fang":  "Fang Armor Trim",
     "item.bully.thorn_armor_trim_smithing_template":  "Thorn Armor Trim Smithing Template",
     "trim_pattern.bully.thorn":  "Thorn Armor Trim",
-    "item.bully.rosarium_crystal_block":  "Rosarium Crystal Block"
+    "item.bully.rosarium_crystal_block":  "Rosarium Crystal Block",
+    "item.bully.empty_trim_template": "Empty Trim Template"
 }

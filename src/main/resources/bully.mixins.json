@@ -3,12 +3,17 @@
 	"package": "net.kraftattacke.bully.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"ArmorTrimArenaStandMixin",
+		"ArmorTrimArenaMovementMixin",
 		"AnvilMenuMixin",
 		"EnchantmentHelperMixin",
 		"EnchantmentMixin",
+		"EntityAccessor",
 		"LivingEntityMixin",
+		"MaceItemMixin",
 		"ItemStackMixin",
 		"ItemCombinerMenuAccessor",
+		"ServerPlaceRecipeMixin",
 		"ExampleMixin",
 		"VillagerTradeParticlesMixin"
 	],

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:potion",
+    "potion_contents": {
+      "potions": "minecraft:awkward"
+    }
+  },
+  "output": {
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "bully:grievous_wounds"
+      }
+    },
+    "id": "minecraft:potion"
+  },
+  "reagent": {
+    "item": "bully:rosarium_crystal"
+  }
+}

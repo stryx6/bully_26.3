@@ -5,7 +5,10 @@
 	"client": [
 		"ExampleClientMixin",
 		"MagicWandTargetGlowMixin",
-		"VillagerProfessionLayerMixin"
+		"VillagerProfessionLayerMixin",
+		"AbstractContainerScreenMixin",
+		"AbstractRecipeBookScreenMixin",
+		"MouseHandlerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

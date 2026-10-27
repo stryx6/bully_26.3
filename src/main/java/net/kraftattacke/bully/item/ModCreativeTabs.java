@@ -81,6 +81,7 @@ public final class ModCreativeTabs {
 		output.accept(ModItems.LARGE_STICK);
 		output.accept(ModItems.DARK_STAR);
 		output.accept(ModItems.MAGIC_CRYSTAL);
+		output.accept(ModItems.EMPTY_TRIM_TEMPLATE);
 		output.accept(ModItems.ECHO_ARMOR_TRIM_SMITHING_TEMPLATE);
 		output.accept(ModItems.RIFT_ARMOR_TRIM_SMITHING_TEMPLATE);
 		output.accept(ModItems.CROWN_ARMOR_TRIM_SMITHING_TEMPLATE);

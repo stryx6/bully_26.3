@@ -1,4 +1,4 @@
-package net.kraftattacke.bully.hackermenu;
+package net.kraftattacke.bully.utilitymenu;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Container;
@@ -11,7 +11,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 
-public final class HackerMenu extends AbstractContainerMenu {
+public final class UtilityMenu extends AbstractContainerMenu {
     public enum Page { MAIN, COMMAND, POTION }
 
     public final Page page;
@@ -19,8 +19,8 @@ public final class HackerMenu extends AbstractContainerMenu {
     private final Container dupeItems;
     private final BaseContainerBlockEntity boundBlock;
 
-    public HackerMenu(int id, Inventory inventory, BlockPos origin, Page page) {
-        super(HackerMenus.type(page), id);
+    public UtilityMenu(int id, Inventory inventory, BlockPos origin, Page page) {
+        super(UtilityMenus.type(page), id);
         this.page = page;
         this.origin = origin.immutable();
         // The original can bind its nine slots to a container at the opening position.
@@ -29,20 +29,21 @@ public final class HackerMenu extends AbstractContainerMenu {
                 && container.getContainerSize() >= 9 ? container : null;
         dupeItems = page == Page.MAIN && boundBlock != null ? boundBlock : new SimpleContainer(9);
         if (page == Page.MAIN) {
+            // 3x3 dupe grid, centred near the top of the compact 176-wide panel.
             for (int i = 0; i < 9; i++) {
-                addSlot(new Slot(dupeItems, i, 123 + (i % 3) * 18, 8 + (i / 3) * 18));
+                addSlot(new Slot(dupeItems, i, 61 + (i % 3) * 18, 18 + (i / 3) * 18));
             }
         }
-        if (page != Page.POTION) {
-            int x = page == Page.MAIN ? 70 : 8;
-            int y = page == Page.MAIN ? 87 : 84;
+        if (page != Page.POTION) { // the effect page is a slotless button page
+            int x = 8;
+            int y = page == Page.MAIN ? 104 : 84;
             for (int row = 0; row < 3; row++) {
                 for (int column = 0; column < 9; column++) {
                     addSlot(new Slot(inventory, column + (row + 1) * 9, x + column * 18, y + row * 18));
                 }
             }
             for (int i = 0; i < 9; i++) {
-                addSlot(new Slot(inventory, i, x + i * 18, page == Page.MAIN ? 145 : 142));
+                addSlot(new Slot(inventory, i, x + i * 18, page == Page.MAIN ? 164 : 142));
             }
         }
     }
