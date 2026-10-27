@@ -44,9 +44,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	// ModMenu + Cloth Config are compile-only; both already ship in run/mods for runtime.
-	clientCompileOnly files("run/mods/modmenu-21.0.0.jar")
-	clientCompileOnly files("run/mods/cloth-config-26.3.158.jar")
+	// ModMenu + Cloth Config are compile-only; jars are committed in libs/ so CI can build; runtime copies live in run/mods.
+	clientCompileOnly files("libs/modmenu-21.0.0.jar")
+	clientCompileOnly files("libs/cloth-config-26.3.158.jar")
 }
 
 sourceSets {
