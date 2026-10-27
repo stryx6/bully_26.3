@@ -304,7 +304,7 @@ public final class ModItems {
 			"fluxite_sword",
 			Item::new,
 			ExplosionResistantItems.protect(new Item.Properties()
-					.sword(FluxiteToolMaterial.INSTANCE, 5.0F, -2.2F)
+					.sword(FluxiteToolMaterial.INSTANCE, 4.0F, -2.2F)
 					.rarity(Rarity.EPIC)
 					.fireResistant())
 	);
