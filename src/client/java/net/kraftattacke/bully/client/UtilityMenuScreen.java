@@ -10,25 +10,21 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import com.mojang.blaze3d.platform.InputConstants;
 
 /** The original three layouts and textures, rendered through the 26.3 extraction API. */
 public final class UtilityMenuScreen extends AbstractContainerScreen<UtilityMenu> {
-    private final Identifier texture;
     private EditBox command;
     private CommandSuggestions commandSuggestions;
 
     public UtilityMenuScreen(UtilityMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, menu.page == UtilityMenu.Page.MAIN ? 300 : 176,
-                menu.page == UtilityMenu.Page.MAIN ? 173 : 166);
-        texture = Identifier.fromNamespaceAndPath("utilitymenu", "textures/screens/" + switch (menu.page) {
-            case MAIN -> "themenugui";
-            case COMMAND -> "command_gui";
-        } + ".png");
+        super(menu, inventory, title, 176, switch (menu.page) {
+            case MAIN -> 190;
+            case COMMAND -> 166;
+            case POTION -> 116;
+        });
     }
 
     @Override
@@ -39,8 +35,20 @@ public final class UtilityMenuScreen extends AbstractContainerScreen<UtilityMenu
         super.init();
         switch (menu.page) {
             case MAIN -> {
-                button(7, "themenugui.button_empty", 134, 64, 30);
-                icon(10, "forward", 281, 4);
+                button(7, "themenugui.button_empty", 61, 78, 54);
+                arrow(11, "<", 4, 6);   // left -> effect page
+                arrow(10, ">", 156, 6); // right -> command page
+            }
+            case POTION -> {
+                button(0, "potiongui.button_quick_mine", 8, 22, 78);   // Quick Mine (haste)
+                button(1, "potiongui.button_quick_mine1", 90, 22, 78); // Inf Saturation
+                button(2, "potiongui.button_quick_mine2", 8, 44, 78);  // Night Vision
+                button(3, "potiongui.button_quick_mine3", 90, 44, 78); // Invisibility
+                button(4, "potiongui.button_quick_mine4", 8, 66, 78);  // Insta Kill (strength)
+                button(5, "potiongui.button_quick_mine5", 90, 66, 78); // Poseidon (water effects)
+                button(8, "themenugui.label_semigod", 8, 88, 78);      // Semi-God
+                button(6, "potiongui.button_quick_mine6", 90, 88, 78); // Turn all off
+                arrow(7, ">", 152, 4); // right -> back to main page
             }
             case COMMAND -> {
                 command = new EditBox(font, leftPos + 4, topPos + 28, 167, 18,
@@ -54,8 +62,8 @@ public final class UtilityMenuScreen extends AbstractContainerScreen<UtilityMenu
                 command.setValue(previousCommand);
                 commandSuggestions.setAllowSuggestions(true);
                 commandSuggestions.updateCommandInfo();
-                button(0, "command_gui.button_execute_com", 41, 46, 93);
-                icon(1, "potion_page", 3, 2);
+                button(0, "command_gui.button_execute_com", 41, 52, 93);
+                arrow(1, "<", 4, 4);
             }
         }
     }
@@ -72,27 +80,41 @@ public final class UtilityMenuScreen extends AbstractContainerScreen<UtilityMenu
                 .bounds(leftPos + x, topPos + y, width, 20).build());
     }
 
-    private void icon(int id, String name, int x, int y) {
-        Identifier image = Identifier.fromNamespaceAndPath("utilitymenu", "textures/screens/" + name + ".png");
-        addRenderableWidget(new Button(leftPos + x, topPos + y, 16, 16,
-                text(menu.page == UtilityMenu.Page.MAIN ? "themenugui.label_next_page" : "command_gui.label_back"),
-                button -> send(id), supplier -> supplier.get()) {
-            @Override
-            protected void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
-                graphics.blit(RenderPipelines.GUI_TEXTURED, image, getX(), getY(), 0, 0, 16, 16, 16, 16);
-            }
-        });
+    private void arrow(int id, String glyph, int x, int y) {
+        addRenderableWidget(Button.builder(Component.literal(glyph), button -> send(id))
+                .bounds(leftPos + x, topPos + y, 16, 16).build());
     }
 
     @Override
     public void extractContents(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
-        graphics.blit(RenderPipelines.GUI_TEXTURED, texture, leftPos, topPos, 0, 0,
-                imageWidth, imageHeight, imageWidth, imageHeight);
+        panel(graphics);
+        slotBackgrounds(graphics);
         super.extractContents(graphics, mouseX, mouseY, delta);
         if (commandSuggestions != null) {
             commandSuggestions.extractRenderState(graphics, mouseX, mouseY);
         }
         extractTooltip(graphics, mouseX, mouseY);
+    }
+
+    /** A plain vanilla-grey bevelled panel, so the menu is cut to its content instead of a wide custom texture. */
+    private void panel(GuiGraphicsExtractor graphics) {
+        int x = leftPos, y = topPos, w = imageWidth, h = imageHeight;
+        graphics.fill(x, y, x + w, y + h, 0xFF000000);                 // outer border
+        graphics.fill(x + 1, y + 1, x + w - 1, y + h - 1, 0xFFC6C6C6); // base grey
+        graphics.fill(x + 1, y + 1, x + w - 1, y + 2, 0xFFFFFFFF);     // top highlight
+        graphics.fill(x + 1, y + 1, x + 2, y + h - 1, 0xFFFFFFFF);     // left highlight
+        graphics.fill(x + w - 2, y + 1, x + w - 1, y + h - 1, 0xFF555555); // right shadow
+        graphics.fill(x + 1, y + h - 2, x + w - 1, y + h - 1, 0xFF555555); // bottom shadow
+    }
+
+    /** Inset vanilla-style slot behind every slot: grey centre, dark top/left edge, light bottom/right edge. */
+    private void slotBackgrounds(GuiGraphicsExtractor graphics) {
+        for (var slot : menu.slots) {
+            int x = leftPos + slot.x - 1, y = topPos + slot.y - 1;
+            graphics.fill(x, y, x + 18, y + 18, 0xFF373737);         // dark: leaves the top + left border
+            graphics.fill(x + 1, y + 1, x + 18, y + 18, 0xFFFFFFFF); // light: leaves the bottom + right border
+            graphics.fill(x + 1, y + 1, x + 17, y + 17, 0xFF8B8B8B); // grey centre
+        }
     }
 
     @Override
@@ -113,20 +135,9 @@ public final class UtilityMenuScreen extends AbstractContainerScreen<UtilityMenu
 
     @Override
     protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
-        switch (menu.page) {
-            case MAIN -> {
-                label(graphics, "themenugui.label_next_page", 207, 7);
-                label(graphics, "themenugui.label_utility_menu_v4", 5, 162);
-            }
-            case COMMAND -> {
-                label(graphics, "command_gui.label_command_page", 101, 4);
-                label(graphics, "command_gui.label_back", 26, 6);
-            }
-        }
-    }
-
-    private void label(GuiGraphicsExtractor graphics, String key, int x, int y) {
-        graphics.text(font, text(key), x, y, -12829636, false);
+        // "Bully Menu" title: centred, flat grey, no shadow (same look as before, just moved to the middle).
+        Component title = text("themenugui.label_utility_menu_v4");
+        graphics.text(font, title, (imageWidth - font.width(title)) / 2, 6, -12829636, false);
     }
 
     @Override
@@ -139,9 +150,12 @@ public final class UtilityMenuScreen extends AbstractContainerScreen<UtilityMenu
             onClose();
             return true;
         }
-        // Commands are submitted only by clicking Execute, even when that button has focus.
+        // Submit the command on Enter (normal or numpad) as well as the Execute button.
         if (menu.page == UtilityMenu.Page.COMMAND
-                && (event.key() == InputConstants.KEY_RETURN || event.key() == InputConstants.KEY_NUMPADENTER)) return true;
+                && (event.key() == InputConstants.KEY_RETURN || event.key() == InputConstants.KEY_NUMPADENTER)) {
+            send(0);
+            return true;
+        }
         if (command != null && command.isFocused()) return command.keyPressed(event);
         return super.keyPressed(event);
     }

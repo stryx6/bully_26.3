@@ -45,7 +45,7 @@
   "gui.utilitymenu.potiongui.button_quick_mine3": "Invisibility",
   "gui.utilitymenu.potiongui.button_quick_mine2": "Night Vision",
   "gui.utilitymenu.potiongui.button_quick_mine1": "Inf Saturation",
-  "gui.utilitymenu.themenugui.label_utility_menu_v4": "Utility Menu v4",
+  "gui.utilitymenu.themenugui.label_utility_menu_v4": "Bully Menu",
   "gui.tinyfixx_expanded.themenugui.button_surviva6": "Max Level",
   "gui.tinyfixx_expanded.themenugui.button_surviva5": "50 Levels",
   "gui.tinyfixx_expanded.themenugui.button_surviva4": "10 Levels",
@@ -53,6 +53,9 @@
   "gui.tinyfixx_expanded.themenugui.button_surviva2": "Spectator",
   "gui.tinyfixx_expanded.themenugui.button_surviva1": "Creative",
   "key.utilitymenu.debugger": "Debugger",
+  "key.utilitymenu.utility_menu": "Utility Menu",
+  "key.category.bully.bully": "Bully",
+  "key.category.bully": "Bully",
   "gui.utilitymenu.command_gui.servercommands": "Send any command here!",
   "gui.tinyfixx_expanded.themenugui.label_semigod": "Semi-god",
   "gui.tinyfixx_expanded.command_gui.label_back": "back"

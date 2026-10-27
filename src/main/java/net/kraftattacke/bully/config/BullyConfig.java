@@ -17,10 +17,18 @@ public final class BullyConfig {
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static BullyConfig instance;
 
-	/** Utility menu is off by default. On a server, only the server's config/bully.json controls this. */
-	public boolean utilityMenuEnabled = false;
+	/** Bully menu (dupe + command) is off by default. On a server, only the server's config/bully.json controls this. */
+	public boolean bullyMenuEnabled = false;
+	/** Utility menu (portable workbenches) is on by default. */
+	public boolean utilityMenuEnabled = true;
+	public Portable portable = new Portable();
 	public SwordCoating swordCoating = new SwordCoating();
 	public MagicWand magicWand = new MagicWand();
+
+	public static final class Portable {
+		/** Portable anvil degrades in this fraction of a placed anvil's uses (0.75 = needs 75% as many uses). */
+		public float anvilDegradeUseFraction = 0.75F;
+	}
 
 	public static final class SwordCoating {
 		public int hitsPerPotion = 10;

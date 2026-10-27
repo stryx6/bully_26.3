@@ -22,6 +22,7 @@ public class Bully implements ModInitializer {
 		net.kraftattacke.bully.config.BullyConfig.load();
 		net.kraftattacke.bully.item.MagicWandItem.applyConfig();
 		net.kraftattacke.bully.utilitymenu.UtilityMenus.register();
+		net.kraftattacke.bully.portable.PortableStations.register();
 		ModNetworking.register();
 		ModSounds.register();
 		ModParticles.register();

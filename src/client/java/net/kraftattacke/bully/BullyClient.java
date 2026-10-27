@@ -13,6 +13,7 @@ public class BullyClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		net.kraftattacke.bully.client.UtilityMenuClient.register();
+		net.kraftattacke.bully.client.PortableClient.register();
 		BurningShieldParticle.registerFactory();
 		MagicWandVisuals.register();
 

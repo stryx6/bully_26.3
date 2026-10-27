@@ -13,6 +13,7 @@
 		"MaceItemMixin",
 		"ItemStackMixin",
 		"ItemCombinerMenuAccessor",
+		"ServerPlaceRecipeMixin",
 		"ExampleMixin",
 		"VillagerTradeParticlesMixin"
 	],

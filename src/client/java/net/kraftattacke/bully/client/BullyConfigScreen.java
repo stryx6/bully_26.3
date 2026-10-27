@@ -26,10 +26,15 @@ public final class BullyConfigScreen {
 		ConfigEntryBuilder e = builder.entryBuilder();
 
 		ConfigCategory general = builder.getOrCreateCategory(Component.literal("General"));
+		general.addEntry(e.startBooleanToggle(Component.literal("Bully menu enabled"), cfg.bullyMenuEnabled)
+				.setDefaultValue(def.bullyMenuEnabled)
+				.setTooltip(Component.literal("Dupe + command menu (keybind \"Debugger\"). Off by default. On a server, only the server's config counts."))
+				.setSaveConsumer(v -> cfg.bullyMenuEnabled = v).build());
 		general.addEntry(e.startBooleanToggle(Component.literal("Utility menu enabled"), cfg.utilityMenuEnabled)
 				.setDefaultValue(def.utilityMenuEnabled)
-				.setTooltip(Component.literal("Dupe + command menu. Off by default. On a server, only the server's config counts."))
+				.setTooltip(Component.literal("Portable workbenches menu (keybind \"Utility Menu\"). On by default."))
 				.setSaveConsumer(v -> cfg.utilityMenuEnabled = v).build());
+		addFloat(general, e, "Portable anvil degrade use fraction", cfg.portable.anvilDegradeUseFraction, def.portable.anvilDegradeUseFraction, v -> cfg.portable.anvilDegradeUseFraction = v);
 
 		ConfigCategory coating = builder.getOrCreateCategory(Component.literal("Sword Coating"));
 		addInt(coating, e, "Hits per potion", cfg.swordCoating.hitsPerPotion, def.swordCoating.hitsPerPotion, v -> cfg.swordCoating.hitsPerPotion = v);

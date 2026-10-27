@@ -5,6 +5,6 @@
   "name": "Bully Utility Menu Port Tests",
   "environment": "client",
   "entrypoints": {
-    "fabric-client-gametest": ["net.kraftattacke.bully.item.MagicWandGameTest", "net.kraftattacke.bully.utilitymenu.UtilityMenuGameTest", "net.kraftattacke.bully.trim.TrimGameTest"]
+    "fabric-client-gametest": ["net.kraftattacke.bully.item.MagicWandGameTest", "net.kraftattacke.bully.utilitymenu.UtilityMenuGameTest", "net.kraftattacke.bully.trim.TrimGameTest", "net.kraftattacke.bully.portable.PortableStationsGameTest"]
   }
 }

@@ -44,7 +44,7 @@ public final class UtilityMenuGameTest implements FabricClientGameTest {
                 require(menu.slots.get(8).getItem().getCount() == 80, "over-max stack preserved");
             });
 
-            click(context, world, "gui.utilitymenu.themenugui.label_next_page");
+            nav(context, world, 10); // forward arrow (button id 10)
             waitPage(context, UtilityMenu.Page.COMMAND);
             context.takeScreenshot("utility-menu-commands");
             context.runOnClient(client -> {
@@ -53,17 +53,24 @@ public final class UtilityMenuGameTest implements FabricClientGameTest {
                 screen.setFocused(box);
                 box.setFocused(true);
             });
-            context.getInput().typeChars("  /give @s minecraft:emerald 3  ");
+            context.getInput().typeChars("give @s minecraft:emerald 3");
             context.getInput().pressKey(InputConstants.KEY_RETURN);
-            context.getInput().pressKey(InputConstants.KEY_NUMPADENTER);
             connection.waitForServerboundPackets();
-            checkPlayer(world, p -> p.getInventory().getNonEquipmentItems().stream()
-                    .noneMatch(stack -> stack.is(Items.EMERALD)), "Enter keys must not execute commands");
-            click(context, world, "gui.utilitymenu.command_gui.button_execute_com");
+            connection.waitForClientboundPackets();
             checkPlayer(world, p -> p.getInventory().getNonEquipmentItems().stream()
                     .filter(stack -> stack.is(Items.EMERALD)).mapToInt(ItemStack::getCount).sum() == 3,
-                    "command text reached server and executed");
-            click(context, world, "gui.utilitymenu.command_gui.label_back");
+                    "Return key executes the command");
+            context.getInput().pressKey(InputConstants.KEY_NUMPADENTER);
+            connection.waitForServerboundPackets();
+            connection.waitForClientboundPackets();
+            checkPlayer(world, p -> p.getInventory().getNonEquipmentItems().stream()
+                    .filter(stack -> stack.is(Items.EMERALD)).mapToInt(ItemStack::getCount).sum() == 6,
+                    "Numpad Enter also executes the command");
+            click(context, world, "gui.utilitymenu.command_gui.button_execute_com");
+            checkPlayer(world, p -> p.getInventory().getNonEquipmentItems().stream()
+                    .filter(stack -> stack.is(Items.EMERALD)).mapToInt(ItemStack::getCount).sum() == 9,
+                    "Execute button still works");
+            nav(context, world, 1); // back arrow (button id 1)
             waitPage(context, UtilityMenu.Page.MAIN);
 
             // An action from a stale/closed menu must not mutate player state.
@@ -101,7 +108,10 @@ public final class UtilityMenuGameTest implements FabricClientGameTest {
                 require(stack.getCount() == 2 && stack.getHoverName().getString().equals("Preserved component"),
                         "dedicated-server dupe retains components");
             });
-            context.clickScreenButton("gui.utilitymenu.themenugui.label_next_page");
+            context.runOnClient(client -> ClientPlayNetworking.send(
+                    new UtilityMenuPayload(client.player.containerMenu.containerId, 10, "")));
+            connection.waitForServerboundPackets();
+            connection.waitForClientboundPackets();
             waitPage(context, UtilityMenu.Page.COMMAND);
             context.runOnClient(client -> {
                 EditBox box = (EditBox) client.gui.screen().children().stream()
@@ -181,6 +191,14 @@ public final class UtilityMenuGameTest implements FabricClientGameTest {
 
     private static void click(ClientGameTestContext context, TestSingleplayerContext world, String key) {
         context.clickScreenButton(key);
+        world.getConnection().waitForServerboundPackets();
+        world.getConnection().waitForClientboundPackets();
+    }
+
+    /** Page navigation now uses glyph arrows (< >), so drive it by the action payload instead of a lang-key button. */
+    private static void nav(ClientGameTestContext context, TestSingleplayerContext world, int button) {
+        context.runOnClient(client -> ClientPlayNetworking.send(
+                new UtilityMenuPayload(client.player.containerMenu.containerId, button, "")));
         world.getConnection().waitForServerboundPackets();
         world.getConnection().waitForClientboundPackets();
     }
