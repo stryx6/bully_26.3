@@ -11,6 +11,7 @@
 		"EntityAccessor",
 		"LivingEntityMixin",
 		"MaceItemMixin",
+		"PlayerPullMixin",
 		"ItemStackMixin",
 		"ItemCombinerMenuAccessor",
 		"ServerPlaceRecipeMixin",

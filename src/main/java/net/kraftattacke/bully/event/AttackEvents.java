@@ -5,7 +5,6 @@ import net.kraftattacke.bully.enchantment.ModEnchantments;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodData;
@@ -24,16 +23,7 @@ public class AttackEvents {
 
                     ItemStack stack = player.getMainHandItem();
 
-                    int level = EnchantmentHelper.getItemEnchantmentLevel(
-                            player.level().registryAccess()
-                                    .lookupOrThrow(Registries.ENCHANTMENT)
-                                    .getOrThrow(ModEnchantments.PULL_KEY),
-                            stack
-                    );
-
-                    if (level > 0) {
-                        pull(player, target, level);
-                    }
+                    // Pull is handled in PlayerPullMixin (after vanilla knockback), not here.
 
                     if (!world.isClientSide() && target instanceof Player victim
                             && player.getAttackStrengthScale(0.5F) >= 0.9F) {
@@ -76,19 +66,4 @@ public class AttackEvents {
         to.setSaturation(Math.min(newFood, to.getSaturationLevel() + saturation * share));
     }
 
-    private static void pull(Player player, LivingEntity target, int level) {
-        Vec3 direction = player.position()
-                .subtract(target.position())
-                .normalize();
-
-        double strength = 0.5 + level * 0.3;
-
-        Vec3 motion = target.getDeltaMovement().add(direction.scale(strength));
-
-        target.setDeltaMovement(
-                motion.x,
-                Math.min(0.4, motion.y),
-                motion.z
-        );
-    }
 }
