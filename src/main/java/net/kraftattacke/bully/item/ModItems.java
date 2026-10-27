@@ -40,6 +40,7 @@ import net.minecraft.world.item.JukeboxSong;
 import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraft.world.item.component.AttackRange;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -165,6 +166,8 @@ public final class ModItems {
 			"large_stick",
 			Item::new,
 			new Item.Properties()
+					// Half a block more reach than a spear: spear maxReach 4.5 -> 5.0 (creative 6.5 -> 7.0).
+					.component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 5.0F, 2.0F, 7.0F, 0.125F, 0.5F))
 	);
 
 	public static final Item MAGIC_CRYSTAL = register(
