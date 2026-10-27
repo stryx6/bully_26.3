@@ -2,7 +2,7 @@
 
 Bully is a Fabric mod that picks up where vanilla stops. Once you've got netherite, there isn't much left to chase, so Bully adds a long stretch of endgame progression on top of it: eight new material tiers, full tool and armor sets for each, a spell-casting wand, custom enchantments, brewable status effects, and armor trims.
 
-It runs on **Fabric** for **Minecraft 1.21.11, 26.2 and 26.3**.
+It runs on **Fabric** for **Minecraft 26.3**.
 
 ## What's in it
 
@@ -60,7 +60,7 @@ All the tuning values live in `config/bully.json`, created the first time the mo
 
 ## Requirements
 
-- Minecraft 1.21.11, 26.2 or 26.3
+- Minecraft 26.3
 - Fabric Loader 0.20.1 or newer
 - Fabric API
 - Java 25
