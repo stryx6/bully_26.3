@@ -168,6 +168,14 @@ public final class ModItems {
 			new Item.Properties()
 					// Half a block more reach than a spear: spear maxReach 4.5 -> 5.0 (creative 6.5 -> 7.0).
 					.component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 5.0F, 2.0F, 7.0F, 0.125F, 0.5F))
+					// The hit indicator only shows when the cooldown is > 5 ticks; the default speed 4.0 is exactly 5. Speed 3.8 (5.3 ticks).
+					.attributes(ItemAttributeModifiers.builder()
+							.add(
+									Attributes.ATTACK_SPEED,
+									new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, -0.2, AttributeModifier.Operation.ADD_VALUE),
+									EquipmentSlotGroup.MAINHAND
+							)
+							.build())
 	);
 
 	public static final Item MAGIC_CRYSTAL = register(
