@@ -14,6 +14,8 @@ Antimatter, Aetherald, Auronyx, Feralyth, Fluxite, Mystralite, Nebulazul and Voi
 You start by upgrading netherite gear to Antimatter with the Antimatter Upgrade Template, then branch into the other variants using the Tool and Armor Upgrade Templates together with ore and gem blocks. There's also an Antimatter Elytra.
 
 ### The Magic Wand
+Charging now draws a spinning magic circle under you and hovering circles above and behind you that grow with the charge: a tunnel of rings with a crown for Ember Lance, a wide fan of lances for Frost Burst, orbiting circles for Life Bloom. When the charge is full the circles spin faster for a moment and sparks rise. On release the beams leave the circles, each spell ends in its own particle explosion, and the circles fade out slowly. Nothing destroys blocks. The hovering circles are best seen in third person.
+
 A three-mode wand you charge up and release. Hold to charge, sneak-use to switch mode:
 
 - **Ember Lance** (red) — a ranged bolt that burns the target and breaks through raised shields.
@@ -26,6 +28,8 @@ Charge level scales range, damage, radius and effect duration, so a full charge 
 - **Hunger Leech** — a sword enchantment that drains hunger and saturation from whoever you hit, more per level.
 - **Mace Guard** — armor enchantment that cuts the mace's fall-damage bonus. It counts all four armor pieces, so a full set holds up against a mace slam from a long fall.
 - **Pull** — drags the target toward you on hit.
+
+- **Elytra Boost** — treasure enchantment for both elytras (levels I-III). Press the keybind (default R, rebindable under Bully) while gliding for a free firework boost: flight duration 1/2/3, cooldown 60/45/30 s. Found only in End City treasure and Ancient City chests, never from villagers or the enchanting table.
 
 ### Grievous Wounds and sword coatings
 **Grievous Wounds** is a status effect that shuts off healing and regeneration, golden apples included. You brew it with a Rosarium Crystal and it comes in the usual forms: normal, long and strong, as a drinking, splash and lingering potion, and on tipped arrows. A honey bottle clears it if you get hit with it.
@@ -53,7 +57,7 @@ A separate in-game menu with three pages. The middle page has an item **Dupe** g
 
 ## Config
 
-All the tuning values live in `config/bully.json`, created the first time the mod loads. You can toggle the two menus (`bullyMenuEnabled`, `utilityMenuEnabled`), set the portable anvil's degrade rate (`portable.anvilDegradeUseFraction`), change sword-coating numbers (hits per potion, duration scale, anvil cost, the instant-potion nerf) and every Magic Wand value (damage, range, radius, healing, effect durations, cooldowns, charge time).
+Every enchantment, the Grievous Wounds potions, scythes, sword coatings and the Magic Wand can be switched off with the `features` block (all default to true; off = cannot be obtained, recipe changes need a restart). All the tuning values live in `config/bully.json`, created the first time the mod loads. You can toggle the two menus (`bullyMenuEnabled`, `utilityMenuEnabled`), set the portable anvil's degrade rate (`portable.anvilDegradeUseFraction`), change sword-coating numbers (hits per potion, duration scale, anvil cost, the instant-potion nerf) and every Magic Wand value (damage, range, radius, healing, effect durations, cooldowns, charge time).
 
 - Edit the file and restart, or run **`/bully reload`** (op level 2) to apply changes live without a restart. On a server, edit the server's copy of the file.
 - If you have **Mod Menu** and **Cloth Config** installed, there's also an in-game config screen: open Mod Menu, find Bully, click the gear. Both mods are optional — without them the mod runs fine, you just edit the JSON directly.

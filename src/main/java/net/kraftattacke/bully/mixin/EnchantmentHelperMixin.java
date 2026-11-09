@@ -24,5 +24,7 @@ public class EnchantmentHelperMixin {
 	@Inject(method = "getAvailableEnchantmentResults", at = @At("RETURN"))
 	private static void bully$clearEnchantingTarget(int level, ItemStack stack, Stream<Holder<Enchantment>> possibleEnchantments, CallbackInfoReturnable<List<EnchantmentInstance>> cir) {
 		EnchantingContext.clearTargetStack();
+		// Disabled enchantments must not roll from the enchanting table.
+		cir.getReturnValue().removeIf(instance -> net.kraftattacke.bully.enchantment.ModEnchantments.isDisabled(instance.enchantment()));
 	}
 }

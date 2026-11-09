@@ -20,7 +20,9 @@ public class Bully implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		net.kraftattacke.bully.config.BullyConfig.load();
+		net.kraftattacke.bully.config.FeatureCondition.register();
 		net.kraftattacke.bully.item.MagicWandItem.applyConfig();
+		net.kraftattacke.bully.enchantment.ElytraBoost.register();
 		net.kraftattacke.bully.utilitymenu.UtilityMenus.register();
 		net.kraftattacke.bully.portable.PortableStations.register();
 		ModNetworking.register();

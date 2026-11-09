@@ -36,7 +36,7 @@ public abstract class AnvilMenuMixin {
 
 		// Sword + drinkable potion: coat the sword instead of the vanilla repair/enchant logic.
 		PotionContents potion = addition.get(DataComponents.POTION_CONTENTS);
-		if (target.is(ItemTags.SWORDS) && addition.is(SwordCoating.COATING_POTIONS) && potion != null && potion.hasEffects()) {
+		if (net.kraftattacke.bully.config.BullyConfig.get().features.swordCoating && target.is(ItemTags.SWORDS) && addition.is(SwordCoating.COATING_POTIONS) && potion != null && potion.hasEffects()) {
 			ItemStack result = target.copy();
 			result.set(SwordCoating.TYPE, new SwordCoating(potion, SwordCoating.hitsFor(potion)));
 			menu.bully$getResultSlots().setItem(0, result);

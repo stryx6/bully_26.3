@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "scythes"
+    }
+  ],
   "type": "minecraft:smithing_transform",
   "addition": "bully:antimatter",
   "base": "minecraft:mace",

@@ -1,9 +1,15 @@
 {
-    "type":  "minecraft:smithing_transform",
-    "template":  "bully:tool_upgrade_smithing_template",
-    "base":  "#bully:upgrade_targets/nebulazul_scythe",
-    "addition":  "minecraft:lapis_block",
-    "result":  {
-                   "id":  "bully:nebulazul_scythe"
-               }
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "scythes"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": "bully:tool_upgrade_smithing_template",
+  "base": "#bully:upgrade_targets/nebulazul_scythe",
+  "addition": "minecraft:lapis_block",
+  "result": {
+    "id": "bully:nebulazul_scythe"
+  }
 }

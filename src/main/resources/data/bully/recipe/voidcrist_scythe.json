@@ -1,9 +1,15 @@
 {
-    "type":  "minecraft:smithing_transform",
-    "addition":  "bully:voidcrist",
-    "base":  "minecraft:mace",
-    "result":  {
-                   "id":  "bully:voidcrist_scythe"
-               },
-    "template":  "bully:antimatter_upgrade_smithing_template"
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "scythes"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:voidcrist",
+  "base": "minecraft:mace",
+  "result": {
+    "id": "bully:voidcrist_scythe"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
 }

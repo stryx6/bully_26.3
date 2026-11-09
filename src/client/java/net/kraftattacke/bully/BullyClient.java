@@ -8,6 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -27,10 +29,27 @@ public class BullyClient implements ClientModInitializer {
 		BurningShieldParticle.registerFactory();
 		MagicWandVisuals.register();
 
+		net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register((group, entries) -> {
+			java.util.function.Predicate<ItemStack> emptyBook = stack -> stack.is(Items.ENCHANTED_BOOK)
+					&& stack.getOrDefault(DataComponents.STORED_ENCHANTMENTS, net.minecraft.world.item.enchantment.ItemEnchantments.EMPTY).isEmpty();
+			entries.getDisplayStacks().removeIf(emptyBook);
+			entries.getSearchTabStacks().removeIf(emptyBook);
+		});
+
+		var boostKey = net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper.registerKeyMapping(new net.minecraft.client.KeyMapping(
+				"key.bully.elytra_boost", com.mojang.blaze3d.platform.InputConstants.KEY_R, net.kraftattacke.bully.client.UtilityMenuClient.BULLY_CATEGORY));
+		net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			while (boostKey.consumeClick()) {
+				if (client.player != null && net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking.canSend(net.kraftattacke.bully.enchantment.ElytraBoostPayload.TYPE)) {
+					net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking.send(new net.kraftattacke.bully.enchantment.ElytraBoostPayload());
+				}
+			}
+		});
+
 		ItemTooltipCallback.EVENT.register((stack, context, flag, lines) -> {
 			addSharpnessDamage(stack, lines);
 			SwordCoating coating = stack.get(SwordCoating.TYPE);
-			if (coating != null) {
+			if (coating != null && net.kraftattacke.bully.config.BullyConfig.get().features.swordCoating) {
 				lines.add(Component.translatable("item.bully.sword_coating", coating.hits()).withStyle(ChatFormatting.DARK_PURPLE));
 				PotionContents.addPotionTooltip(coating.contents().getAllEffects(), lines::add, SwordCoating.DURATION_SCALE, context.tickRate());
 			}

@@ -17,7 +17,7 @@ public abstract class MaceItemMixin {
 
 	@Inject(method = "getAttackDamageBonus", at = @At("RETURN"), cancellable = true)
 	private void bully$maceGuard(Entity target, float damage, DamageSource source, CallbackInfoReturnable<Float> cir) {
-		if (!(target instanceof LivingEntity living) || cir.getReturnValueF() <= 0.0F) {
+		if (!net.kraftattacke.bully.config.BullyConfig.get().features.maceGuard || !(target instanceof LivingEntity living) || cir.getReturnValueF() <= 0.0F) {
 			return;
 		}
 		int levels = ModEnchantments.getTotalMaceGuardLevel(living);
