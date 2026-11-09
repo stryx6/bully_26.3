@@ -29,6 +29,19 @@ public final class ModEnchantments {
 			Identifier.fromNamespaceAndPath(Bully.MOD_ID, "hunger_leech")
 	);
 
+	public static final ResourceKey<Enchantment> ELYTRA_BOOST_KEY = ResourceKey.create(
+			Registries.ENCHANTMENT,
+			Identifier.fromNamespaceAndPath(Bully.MOD_ID, "elytra_boost")
+	);
+
+	/** True for a Bully enchantment switched off in config/bully.json. */
+	public static boolean isDisabled(Holder<Enchantment> enchantment) {
+		return enchantment.unwrapKey()
+				.map(key -> key.identifier().getNamespace().equals(Bully.MOD_ID)
+						&& !net.kraftattacke.bully.config.BullyConfig.get().features.isEnabled(key.identifier().getPath()))
+				.orElse(false);
+	}
+
 	private ModEnchantments() {
 	}
 

@@ -424,7 +424,7 @@ public final class ModItems {
 							DataComponents.EQUIPPABLE,
 							Equippable.builder(EquipmentSlot.CHEST)
 									.setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA)
-									.setAsset(EquipmentAssets.ELYTRA)
+									.setAsset(ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Bully.MOD_ID, "antimatter_elytra")))
 									.setDamageOnHurt(false)
 									.build()
 					)

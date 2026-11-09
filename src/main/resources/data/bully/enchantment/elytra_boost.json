@@ -1,0 +1,20 @@
+{
+  "description": {
+    "translate": "enchantment.bully.elytra_boost"
+  },
+  "supported_items": "#bully:enchantable/elytra",
+  "weight": 1,
+  "max_level": 3,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 75,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 8,
+  "slots": [
+    "chest"
+  ]
+}

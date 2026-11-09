@@ -24,6 +24,40 @@ public final class BullyConfig {
 	public Portable portable = new Portable();
 	public SwordCoating swordCoating = new SwordCoating();
 	public MagicWand magicWand = new MagicWand();
+	public Features features = new Features();
+	public ElytraBoost elytraBoost = new ElytraBoost();
+
+	/** Everything defaults to on; set one to false to make that content unobtainable (existing items stay but do nothing). */
+	public static final class Features {
+		public boolean maceGuard = true;
+		public boolean pull = true;
+		public boolean hungerLeech = true;
+		public boolean elytraBoost = true;
+		public boolean grievousWoundsPotions = true;
+		public boolean scythes = true;
+		public boolean swordCoating = true;
+		public boolean magicWand = true;
+
+		public boolean isEnabled(String name) {
+			return switch (name) {
+				case "mace_guard" -> maceGuard;
+				case "pull" -> pull;
+				case "hunger_leech" -> hungerLeech;
+				case "elytra_boost" -> elytraBoost;
+				case "grievous_wounds_potions" -> grievousWoundsPotions;
+				case "scythes" -> scythes;
+				case "sword_coating" -> swordCoating;
+				case "magic_wand" -> magicWand;
+				default -> true;
+			};
+		}
+	}
+
+	public static final class ElytraBoost {
+		public int cooldownSecondsLevel1 = 60;
+		public int cooldownSecondsLevel2 = 45;
+		public int cooldownSecondsLevel3 = 30;
+	}
 
 	public static final class Portable {
 		/** Portable anvil degrades in this fraction of a placed anvil's uses (0.75 = needs 75% as many uses). */

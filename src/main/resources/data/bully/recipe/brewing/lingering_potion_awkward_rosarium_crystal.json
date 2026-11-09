@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "grievous_wounds_potions"
+    }
+  ],
   "type": "minecraft:brewing",
   "input": {
     "item": "minecraft:lingering_potion",

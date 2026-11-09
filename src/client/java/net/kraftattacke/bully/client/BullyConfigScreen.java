@@ -36,6 +36,19 @@ public final class BullyConfigScreen {
 				.setSaveConsumer(v -> cfg.utilityMenuEnabled = v).build());
 		addFloat(general, e, "Portable anvil degrade use fraction", cfg.portable.anvilDegradeUseFraction, def.portable.anvilDegradeUseFraction, v -> cfg.portable.anvilDegradeUseFraction = v);
 
+		ConfigCategory features = builder.getOrCreateCategory(Component.literal("Content on/off"));
+		features.addEntry(e.startBooleanToggle(Component.literal("Mace Guard enchantment"), cfg.features.maceGuard).setDefaultValue(def.features.maceGuard).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.maceGuard = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Pull enchantment"), cfg.features.pull).setDefaultValue(def.features.pull).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.pull = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Hunger Leech enchantment"), cfg.features.hungerLeech).setDefaultValue(def.features.hungerLeech).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.hungerLeech = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Elytra Boost enchantment"), cfg.features.elytraBoost).setDefaultValue(def.features.elytraBoost).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.elytraBoost = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Grievous Wounds potions"), cfg.features.grievousWoundsPotions).setDefaultValue(def.features.grievousWoundsPotions).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.grievousWoundsPotions = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Scythes"), cfg.features.scythes).setDefaultValue(def.features.scythes).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.scythes = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Sword Coating"), cfg.features.swordCoating).setDefaultValue(def.features.swordCoating).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.swordCoating = v).build());
+		features.addEntry(e.startBooleanToggle(Component.literal("Magic Wand"), cfg.features.magicWand).setDefaultValue(def.features.magicWand).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.magicWand = v).build());
+		addInt(features, e, "Elytra Boost cooldown lvl 1 (s)", cfg.elytraBoost.cooldownSecondsLevel1, def.elytraBoost.cooldownSecondsLevel1, v -> cfg.elytraBoost.cooldownSecondsLevel1 = v);
+		addInt(features, e, "Elytra Boost cooldown lvl 2 (s)", cfg.elytraBoost.cooldownSecondsLevel2, def.elytraBoost.cooldownSecondsLevel2, v -> cfg.elytraBoost.cooldownSecondsLevel2 = v);
+		addInt(features, e, "Elytra Boost cooldown lvl 3 (s)", cfg.elytraBoost.cooldownSecondsLevel3, def.elytraBoost.cooldownSecondsLevel3, v -> cfg.elytraBoost.cooldownSecondsLevel3 = v);
+
 		ConfigCategory coating = builder.getOrCreateCategory(Component.literal("Sword Coating"));
 		addInt(coating, e, "Hits per potion", cfg.swordCoating.hitsPerPotion, def.swordCoating.hitsPerPotion, v -> cfg.swordCoating.hitsPerPotion = v);
 		addFloat(coating, e, "Duration scale", cfg.swordCoating.durationScale, def.swordCoating.durationScale, v -> cfg.swordCoating.durationScale = v);

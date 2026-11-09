@@ -1,7 +1,12 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "mace_guard"
+    }
+  ],
   "replace": false,
   "values": [
     "bully:mace_guard"
   ]
 }
-

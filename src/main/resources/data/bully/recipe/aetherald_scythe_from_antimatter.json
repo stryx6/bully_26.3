@@ -1,4 +1,10 @@
 {
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "scythes"
+    }
+  ],
   "type": "minecraft:smithing_transform",
   "template": "bully:tool_upgrade_smithing_template",
   "base": "#bully:upgrade_targets/aetherald_scythe",

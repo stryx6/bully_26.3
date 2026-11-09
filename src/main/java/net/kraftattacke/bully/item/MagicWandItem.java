@@ -285,7 +285,11 @@ public class MagicWandItem extends Item {
 		SpellTarget target = findTarget(level, player, range);
 		Vec3 origin = getWandParticleOrigin(player, hand);
 		spawnBeam(level, origin, target.location(), SpellMode.RED);
+		spawnHelix(level, origin, target.location(), SpellMode.RED);
+		spawnPillar(level, target.location(), SpellMode.RED, 2.2 + charge * 2.0, 0.55);
+		spawnExplosion(level, target.location(), SpellMode.RED, charge);
 		spawnBurst(level, target.location(), SpellMode.RED, 24 + (int) (charge * 24), 0.16 + charge * 0.14);
+		level.sendParticles(ParticleTypes.FLAME, target.location().x, target.location().y + 0.2, target.location().z, 30 + (int) (charge * 30), 0.5, 0.4, 0.5, 0.12);
 		playCastSound(level, origin, target.location(), SpellMode.RED, charge);
 
 		if (target.entity() == null) {
@@ -296,6 +300,15 @@ public class MagicWandItem extends Item {
 		DamageSource source = createDamageSource(level, SpellMode.RED, player);
 		target.entity().hurtServer(level, source, EMBER_LANCE_BASE_DAMAGE + steppedCharge * EMBER_LANCE_CHARGED_DAMAGE_BONUS);
 		target.entity().igniteForSeconds(EMBER_LANCE_BASE_FIRE_SECONDS + charge * EMBER_LANCE_CHARGED_FIRE_SECONDS_BONUS);
+
+		// Sparks jump to nearby enemies: a quarter of the damage and a short burn. Entities only, no blocks.
+		float splashDamage = (EMBER_LANCE_BASE_DAMAGE + steppedCharge * EMBER_LANCE_CHARGED_DAMAGE_BONUS) * 0.25F;
+		for (LivingEntity nearby : getLivingEntitiesAround(level, player, target.location(), 2.0 + charge * 2.0)) {
+			if (nearby != target.entity()) {
+				nearby.hurtServer(level, source, splashDamage);
+				nearby.igniteForSeconds(3.0F);
+			}
+		}
 		return true;
 	}
 
@@ -309,6 +322,10 @@ public class MagicWandItem extends Item {
 		spawnBeam(level, origin, center, SpellMode.BLUE);
 		spawnBurst(level, center, SpellMode.BLUE, 54 + (int) (charge * 42), radius * 0.18);
 		spawnImpactRing(level, center, SpellMode.BLUE, radius, 42);
+		spawnHelix(level, origin, center, SpellMode.BLUE);
+		spawnRisingRings(level, center, SpellMode.BLUE, radius, 4);
+		spawnPillar(level, center, SpellMode.BLUE, 2.0 + charge * 1.5, 0.45);
+		spawnExplosion(level, center, SpellMode.BLUE, charge);
 		level.sendParticles(ParticleTypes.SNOWFLAKE, center.x, center.y + 0.25, center.z, 46 + (int) (charge * 36), radius * 0.38, 0.45, radius * 0.38, 0.025);
 		level.sendParticles(ParticleTypes.ELECTRIC_SPARK, center.x, center.y + 0.25, center.z, 12 + (int) (charge * 14), radius * 0.18, 0.18, radius * 0.18, 0.02);
 		playCastSound(level, origin, center, SpellMode.BLUE, charge);
@@ -316,6 +333,7 @@ public class MagicWandItem extends Item {
 		DamageSource source = createDamageSource(level, SpellMode.BLUE, player);
 		for (LivingEntity livingTarget : targets) {
 			livingTarget.hurtServer(level, source, FROST_BURST_BASE_DAMAGE + charge * FROST_BURST_CHARGED_DAMAGE_BONUS);
+			livingTarget.setTicksFrozen(livingTarget.getTicksRequiredToFreeze() + 60 + (int) (charge * 100));
 			livingTarget.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, effectDurationTicks(FROST_BURST_SLOWNESS_SECONDS, FROST_BURST_CHARGED_SLOWNESS_SECONDS_BONUS, steppedCharge), 4, false, true, true));
 			Vec3 push = livingTarget.position().subtract(center);
 			if (push.lengthSqr() < 0.01) {
@@ -336,6 +354,10 @@ public class MagicWandItem extends Item {
 		Vec3 origin = getWandParticleOrigin(player, hand);
 		spawnBeam(level, origin, center, SpellMode.GREEN);
 		spawnLifeBloomField(level, center, radius, charge);
+		spawnHelix(level, origin, center, SpellMode.GREEN);
+		spawnRisingRings(level, center, SpellMode.GREEN, radius * 0.8, 4);
+		spawnPillar(level, center, SpellMode.GREEN, 2.5 + charge * 1.5, 0.6);
+		spawnExplosion(level, center, SpellMode.GREEN, charge);
 		boolean hitLivingTarget = !targets.isEmpty();
 		applyLifeBloomHealing(level, player, LIFE_BLOOM_SELF_HEAL + charge * LIFE_BLOOM_CHARGED_SELF_HEAL_BONUS, charge, hitLivingTarget);
 		playCastSound(level, origin, center, SpellMode.GREEN, charge);
@@ -549,7 +571,10 @@ public class MagicWandItem extends Item {
 		return caster.getEyePosition()
 				.add(forward.scale(0.55))
 				.add(right.scale(handSide))
-				.add(up.scale(-0.38));
+				.add(up.scale(-0.38))
+				// the crystal floats at the top of the staff, above and ahead of the hand
+				.add(up.scale(0.75))
+				.add(forward.scale(0.35));
 	}
 
 	private static void spawnBeam(ServerLevel level, Vec3 start, Vec3 end, SpellMode mode) {
@@ -574,6 +599,101 @@ public class MagicWandItem extends Item {
 			double angle = Math.PI * 2.0 * i / points;
 			Vec3 point = center.add(Math.cos(angle) * radius, 0.08, Math.sin(angle) * radius);
 			level.sendParticles(i % 2 == 0 ? mode.dust(1.0F) : mode.secondaryDust(0.8F), point.x, point.y, point.z, 1, 0.01, 0.01, 0.01, 0.0);
+		}
+	}
+
+	/** Particles flying outward from a point in all directions (count 0 = the offsets are the velocity). */
+	private static void radialBurst(ServerLevel level, ParticleOptions particle, Vec3 center, int count, double speed) {
+		double golden = Math.PI * (3.0 - Math.sqrt(5.0));
+		for (int i = 0; i < count; i++) {
+			double y = 1.0 - 2.0 * (i + 0.5) / count;
+			double r = Math.sqrt(1.0 - y * y);
+			double angle = golden * i;
+			level.sendParticles(particle, center.x, center.y, center.z, 0, Math.cos(angle) * r, y, Math.sin(angle) * r, speed);
+		}
+	}
+
+	/** Particles shooting outward flat along the ground. */
+	private static void flatBurst(ServerLevel level, ParticleOptions particle, Vec3 center, int count, double speed) {
+		for (int i = 0; i < count; i++) {
+			double angle = Math.PI * 2.0 * i / count;
+			level.sendParticles(particle, center.x, center.y + 0.15, center.z, 0, Math.cos(angle), 0.02, Math.sin(angle), speed);
+		}
+	}
+
+	/** A different explosion for every spell. Particles only: it never destroys or ignites blocks. */
+	private static void spawnExplosion(ServerLevel level, Vec3 center, SpellMode mode, float charge) {
+		int scale = 1 + (int) (charge * 2);
+		switch (mode) {
+			case RED -> {
+				level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, center.x, center.y, center.z, 1, 0.0, 0.0, 0.0, 0.0);
+				radialBurst(level, ParticleTypes.FLAME, center, 50 * scale, 0.45);
+				radialBurst(level, ParticleTypes.LARGE_SMOKE, center, 20 * scale, 0.25);
+				flatBurst(level, ParticleTypes.FLAME, center, 36, 0.6);
+			}
+			case BLUE -> {
+				radialBurst(level, ParticleTypes.SNOWFLAKE, center, 70 * scale, 0.35);
+				radialBurst(level, ParticleTypes.END_ROD, center, 30 * scale, 0.55);
+				flatBurst(level, ParticleTypes.CLOUD, center, 40, 0.5);
+			}
+			default -> {
+				radialBurst(level, ParticleTypes.HAPPY_VILLAGER, center, 40 * scale, 0.3);
+				radialBurst(level, ParticleTypes.COMPOSTER, center, 24 * scale, 0.2);
+				flatBurst(level, ParticleTypes.HAPPY_VILLAGER, center, 40, 0.45);
+			}
+		}
+	}
+
+	/** Two intertwined spirals of dust along the beam. Particles only, never touches blocks. */
+	private static void spawnHelix(ServerLevel level, Vec3 start, Vec3 end, SpellMode mode) {
+		Vec3 axis = end.subtract(start);
+		double length = axis.length();
+		if (length < 1.0) {
+			return;
+		}
+		Vec3 forward = axis.normalize();
+		Vec3 right = perpendicularTo(forward);
+		Vec3 up = forward.cross(right).normalize();
+		int steps = (int) Math.min(90, length * 2.5);
+		for (int i = 0; i < steps; i++) {
+			double along = length * i / steps;
+			double angle = along * 1.6;
+			double radius = 0.28 + 0.1 * Math.sin(along * 0.7);
+			for (int strand = 0; strand < 2; strand++) {
+				double a = angle + strand * Math.PI;
+				Vec3 point = start.add(forward.scale(along)).add(right.scale(Math.cos(a) * radius)).add(up.scale(Math.sin(a) * radius));
+				level.sendParticles(strand == 0 ? mode.dust(0.9F) : mode.secondaryDust(0.8F), point.x, point.y, point.z, 1, 0.0, 0.0, 0.0, 0.0);
+			}
+		}
+	}
+
+	/** A narrowing spinning column rising from the impact point. */
+	private static void spawnPillar(ServerLevel level, Vec3 center, SpellMode mode, double height, double radius) {
+		int layers = (int) (height / 0.35);
+		for (int layer = 0; layer < layers; layer++) {
+			double progress = layer / (double) layers;
+			double ringRadius = radius * (1.0 - 0.7 * progress);
+			for (int p = 0; p < 4; p++) {
+				double angle = progress * 9.0 + p * Math.PI / 2.0;
+				level.sendParticles(p % 2 == 0 ? mode.dust(1.1F) : mode.secondaryDust(0.9F),
+						center.x + Math.cos(angle) * ringRadius, center.y + progress * height, center.z + Math.sin(angle) * ringRadius, 1, 0.0, 0.0, 0.0, 0.0);
+			}
+			if (layer % 3 == 0) {
+				level.sendParticles(mode.accentParticle, center.x, center.y + progress * height, center.z, 1, ringRadius * 0.4, 0.05, ringRadius * 0.4, 0.01);
+			}
+		}
+	}
+
+	/** Several flat rings stacked above each other. */
+	private static void spawnRisingRings(ServerLevel level, Vec3 center, SpellMode mode, double radius, int rings) {
+		for (int ring = 0; ring < rings; ring++) {
+			double r = radius * (1.0 - 0.15 * ring);
+			int points = 28;
+			for (int i = 0; i < points; i++) {
+				double angle = Math.PI * 2.0 * i / points + ring * 0.4;
+				level.sendParticles(i % 2 == 0 ? mode.dust(1.0F) : mode.secondaryDust(0.8F),
+						center.x + Math.cos(angle) * r, center.y + 0.1 + ring * 0.45, center.z + Math.sin(angle) * r, 1, 0.0, 0.0, 0.0, 0.0);
+			}
 		}
 	}
 

@@ -78,7 +78,7 @@ public record SwordCoating(PotionContents contents, int hits) {
 	}
 
 	public static void onHit(ServerLevel level, ItemStack weapon, LivingEntity target, LivingEntity attacker) {
-		if (weapon == null) {
+		if (weapon == null || !net.kraftattacke.bully.config.BullyConfig.get().features.swordCoating) {
 			return;
 		}
 		SwordCoating coating = weapon.get(TYPE);

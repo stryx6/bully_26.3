@@ -1,9 +1,15 @@
 {
-    "type":  "minecraft:smithing_transform",
-    "addition":  "bully:nebulazul",
-    "base":  "minecraft:mace",
-    "result":  {
-                   "id":  "bully:nebulazul_scythe"
-               },
-    "template":  "bully:antimatter_upgrade_smithing_template"
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "scythes"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": "bully:nebulazul",
+  "base": "minecraft:mace",
+  "result": {
+    "id": "bully:nebulazul_scythe"
+  },
+  "template": "bully:antimatter_upgrade_smithing_template"
 }

@@ -25,7 +25,7 @@ public class AttackEvents {
 
                     // Pull is handled in PlayerPullMixin (after vanilla knockback), not here.
 
-                    if (!world.isClientSide() && target instanceof Player victim
+                    if (!world.isClientSide() && net.kraftattacke.bully.config.BullyConfig.get().features.hungerLeech && target instanceof Player victim
                             && player.getAttackStrengthScale(0.5F) >= 0.9F) {
                         int leechLevel = EnchantmentHelper.getItemEnchantmentLevel(
                                 world.registryAccess()

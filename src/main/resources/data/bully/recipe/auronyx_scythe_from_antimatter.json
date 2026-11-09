@@ -1,9 +1,15 @@
 {
-    "type":  "minecraft:smithing_transform",
-    "template":  "bully:tool_upgrade_smithing_template",
-    "base":  "#bully:upgrade_targets/auronyx_scythe",
-    "addition":  "minecraft:gold_block",
-    "result":  {
-                   "id":  "bully:auronyx_scythe"
-               }
+  "fabric:load_conditions": [
+    {
+      "condition": "bully:feature",
+      "feature": "scythes"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": "bully:tool_upgrade_smithing_template",
+  "base": "#bully:upgrade_targets/auronyx_scythe",
+  "addition": "minecraft:gold_block",
+  "result": {
+    "id": "bully:auronyx_scythe"
+  }
 }

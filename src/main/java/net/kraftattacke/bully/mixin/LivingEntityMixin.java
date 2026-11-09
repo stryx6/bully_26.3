@@ -55,7 +55,7 @@ public abstract class LivingEntityMixin {
 		}
 
 		ItemStack weapon = source.getWeaponItem();
-		if (weapon == null || weapon.isEmpty()) {
+		if (!net.kraftattacke.bully.config.BullyConfig.get().features.pull || weapon == null || weapon.isEmpty()) {
 			return;
 		}
 

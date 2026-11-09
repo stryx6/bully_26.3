@@ -32,6 +32,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class ModTools {
+	public static final net.minecraft.tags.TagKey<net.minecraft.world.item.Item> SCYTHES_TAG = net.minecraft.tags.TagKey.create(
+			net.minecraft.core.registries.Registries.ITEM, net.minecraft.resources.Identifier.fromNamespaceAndPath("bully", "scythes"));
+
 	public static final Logger LOGGER = LoggerFactory.getLogger(ModTools.class);
 
 	private static final ScytheStats SCYTHE_STATS = ScytheStatsConfig.load();

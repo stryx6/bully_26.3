@@ -54,6 +54,7 @@ public final class ModCreativeTabs {
 								ModItems.VOIDCRIST_CHESTPLATE,
 								ModItems.VOIDCRIST_LEGGINGS,
 								ModItems.VOIDCRIST_BOOTS);
+						addEnchantBooksAndPotions(parameters, output);
 						output.accept(ModItems.MUSIC_DISC_ATTACK);
 						output.accept(ModItems.MUSIC_DISC_ELDERWOOD);
 						output.accept(ModItems.MUSIC_DISC_EVERMERE);
@@ -73,6 +74,34 @@ public final class ModCreativeTabs {
 		// Static initialization performs the registration.
 	}
 
+	private static void addEnchantBooksAndPotions(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
+		var features = net.kraftattacke.bully.config.BullyConfig.get().features;
+		var enchantments = parameters.holders().lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT);
+		record Book(net.minecraft.resources.ResourceKey<net.minecraft.world.item.enchantment.Enchantment> key, int maxLevel, boolean enabled) { }
+		for (Book book : new Book[] {
+				new Book(net.kraftattacke.bully.enchantment.ModEnchantments.MACE_GUARD_KEY, 4, features.maceGuard),
+				new Book(net.kraftattacke.bully.enchantment.ModEnchantments.PULL_KEY, 1, features.pull),
+				new Book(net.kraftattacke.bully.enchantment.ModEnchantments.HUNGER_LEECH_KEY, 3, features.hungerLeech),
+				new Book(net.kraftattacke.bully.enchantment.ModEnchantments.ELYTRA_BOOST_KEY, 3, features.elytraBoost)}) {
+			if (!book.enabled()) continue;
+			var holder = enchantments.getOrThrow(book.key());
+			for (int level = 1; level <= book.maxLevel(); level++) {
+				output.accept(net.minecraft.world.item.enchantment.EnchantmentHelper.createBook(
+						new net.minecraft.world.item.enchantment.EnchantmentInstance(holder, level)));
+			}
+		}
+		if (features.grievousWoundsPotions) {
+			for (var potion : java.util.List.of(net.kraftattacke.bully.effect.ModEffects.GRIEVOUS_WOUNDS_POTION,
+					net.kraftattacke.bully.effect.ModEffects.LONG_GRIEVOUS_WOUNDS_POTION,
+					net.kraftattacke.bully.effect.ModEffects.STRONG_GRIEVOUS_WOUNDS_POTION)) {
+				for (Item item : new Item[] {net.minecraft.world.item.Items.POTION, net.minecraft.world.item.Items.SPLASH_POTION,
+						net.minecraft.world.item.Items.LINGERING_POTION, net.minecraft.world.item.Items.TIPPED_ARROW}) {
+					output.accept(net.minecraft.world.item.alchemy.PotionContents.createItemStack(item, potion));
+				}
+			}
+		}
+	}
+
 	private static void addAntimatterSection(CreativeModeTab.Output output) {
 		output.accept(ModItems.ANTIMATTER);
 		output.accept(ModBlocks.ANTIMATTER_BLOCK);
@@ -90,13 +119,13 @@ public final class ModCreativeTabs {
 		output.accept(ModItems.ANTIMATTER_UPGRADE_SMITHING_TEMPLATE);
 		output.accept(ModItems.ARMOR_UPGRADE_SMITHING_TEMPLATE);
 		output.accept(ModItems.TOOL_UPGRADE_SMITHING_TEMPLATE);
-		output.accept(ModItems.MAGIC_WAND);
+		if (net.kraftattacke.bully.config.BullyConfig.get().features.magicWand) output.accept(ModItems.MAGIC_WAND);
 		output.accept(ModItems.ANTIMATTER_SWORD);
 		output.accept(ModItems.ANTIMATTER_PICKAXE);
 		output.accept(ModItems.ANTIMATTER_AXE);
 		output.accept(ModItems.ANTIMATTER_SHOVEL);
 		output.accept(ModItems.ANTIMATTER_HOE);
-		output.accept(ModItems.ANTIMATTER_SCYTHE);
+		if (net.kraftattacke.bully.config.BullyConfig.get().features.scythes) output.accept(ModItems.ANTIMATTER_SCYTHE);
 		output.accept(ModItems.ANTIMATTER_SPEAR);
 
 		output.accept(ModItems.ANTIMATTER_ELYTRA);
@@ -121,7 +150,7 @@ public final class ModCreativeTabs {
 		output.accept(tools.axe());
 		output.accept(tools.shovel());
 		output.accept(tools.hoe());
-		output.accept(tools.scythe());
+		if (net.kraftattacke.bully.config.BullyConfig.get().features.scythes) output.accept(tools.scythe());
 		output.accept(tools.spear());
 		output.accept(helmet);
 		output.accept(chestplate);

@@ -13,6 +13,8 @@
 		"MaceItemMixin",
 		"PlayerPullMixin",
 		"ItemStackMixin",
+		"ItemEnchantmentsMutableMixin",
+		"CreativeTabBookMixin",
 		"ItemCombinerMenuAccessor",
 		"ServerPlaceRecipeMixin",
 		"ExampleMixin",
