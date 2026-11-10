@@ -36,6 +36,12 @@ public final class BullyConfigScreen {
 				.setSaveConsumer(v -> cfg.utilityMenuEnabled = v).build());
 		addFloat(general, e, "Portable anvil degrade use fraction", cfg.portable.anvilDegradeUseFraction, def.portable.anvilDegradeUseFraction, v -> cfg.portable.anvilDegradeUseFraction = v);
 
+		ConfigCategory visuals = builder.getOrCreateCategory(Component.literal("Visuals"));
+		visuals.addEntry(e.startBooleanToggle(Component.literal("3D scythe models"), cfg.visuals.scythe3d)
+				.setDefaultValue(def.visuals.scythe3d)
+				.setTooltip(Component.literal("On = scythes are shown as 3D models in hand, off = classic 2D sprites. Client only: only you see your choice, also on servers. Inventory always shows the sprite."))
+				.setSaveConsumer(v -> cfg.visuals.scythe3d = v).build());
+
 		ConfigCategory features = builder.getOrCreateCategory(Component.literal("Content on/off"));
 		features.addEntry(e.startBooleanToggle(Component.literal("Mace Guard enchantment"), cfg.features.maceGuard).setDefaultValue(def.features.maceGuard).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.maceGuard = v).build());
 		features.addEntry(e.startBooleanToggle(Component.literal("Pull enchantment"), cfg.features.pull).setDefaultValue(def.features.pull).setTooltip(Component.literal("Off = cannot be obtained (existing items do nothing). Restart needed for recipes.")).setSaveConsumer(v -> cfg.features.pull = v).build());

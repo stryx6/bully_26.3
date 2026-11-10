@@ -26,6 +26,13 @@ public final class BullyConfig {
 	public MagicWand magicWand = new MagicWand();
 	public Features features = new Features();
 	public ElytraBoost elytraBoost = new ElytraBoost();
+	public Visuals visuals = new Visuals();
+
+	/** Client-only looks: each player's own config decides what they see, also on servers. */
+	public static final class Visuals {
+		/** true = scythes use the 3D model in hand; false = the classic 2D sprite. Inventory always shows the sprite. */
+		public boolean scythe3d = true;
+	}
 
 	/** Everything defaults to on; set one to false to make that content unobtainable (existing items stay but do nothing). */
 	public static final class Features {

@@ -59,6 +59,7 @@ A separate in-game menu with three pages. The middle page has an item **Dupe** g
 
 Every enchantment, the Grievous Wounds potions, scythes, sword coatings and the Magic Wand can be switched off with the `features` block (all default to true; off = cannot be obtained, recipe changes need a restart). All the tuning values live in `config/bully.json`, created the first time the mod loads. You can toggle the two menus (`bullyMenuEnabled`, `utilityMenuEnabled`), set the portable anvil's degrade rate (`portable.anvilDegradeUseFraction`), change sword-coating numbers (hits per potion, duration scale, anvil cost, the instant-potion nerf) and every Magic Wand value (damage, range, radius, healing, effect durations, cooldowns, charge time).
 
+- **3D scythes** (`visuals.scythe3d`, default on): every scythe is shown as a 3D model in hand, with crystal colors matching its tier; switch it off for the classic 2D sprites. The inventory always shows the sprite. This setting is client-only — each player sees their own choice, also on servers, nothing is synced.
 - Edit the file and restart, or run **`/bully reload`** (op level 2) to apply changes live without a restart. On a server, edit the server's copy of the file.
 - If you have **Mod Menu** and **Cloth Config** installed, there's also an in-game config screen: open Mod Menu, find Bully, click the gear. Both mods are optional — without them the mod runs fine, you just edit the JSON directly.
 

@@ -28,6 +28,7 @@ public class BullyClient implements ClientModInitializer {
 		net.kraftattacke.bully.client.PortableClient.register();
 		BurningShieldParticle.registerFactory();
 		MagicWandVisuals.register();
+		net.kraftattacke.bully.client.Scythe3dProperty.register();
 
 		net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents.MODIFY_OUTPUT_ALL.register((group, entries) -> {
 			java.util.function.Predicate<ItemStack> emptyBook = stack -> stack.is(Items.ENCHANTED_BOOK)

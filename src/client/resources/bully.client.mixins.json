@@ -8,7 +8,8 @@
 		"VillagerProfessionLayerMixin",
 		"AbstractContainerScreenMixin",
 		"AbstractRecipeBookScreenMixin",
-		"MouseHandlerMixin"
+		"MouseHandlerMixin",
+		"ConditionalItemModelPropertiesAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1
