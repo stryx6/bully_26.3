@@ -1,0 +1,7 @@
+{
+  "parent": "bully:item/scythe_3d",
+  "textures": {
+    "0": "bully:item/voidcrist_scythe_3d",
+    "particle": "bully:item/voidcrist_scythe_3d"
+  }
+}
